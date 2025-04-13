@@ -60,7 +60,8 @@
                         APPLICATIONS</a>
                     {% elif session.get('role') in ['employer', 'admin'] %}
                     <a href="{{ url_for('employer.my_jobs') }}"
-                        class="nav-item nav-link {% if request.endpoint == 'employer.my_jobs' %}active{% endif %}">MY JOBS</a>
+                        class="nav-item nav-link {% if request.endpoint == 'employer.my_jobs' %}active{% endif %}">MY
+                        JOBS</a>
                     {% endif %}
 
                     <a href="{{ url_for('main.contact') }}" class="nav-item nav-link {% if request.endpoint 
@@ -132,7 +133,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <p class="mb-0">
-                            &copy; <a class="text-white border-bottom"
+                            &copy; <a class="text-white text-decoration-none"
                                 href="{{ url_for('main.index') }}">StartWorking</a>, All Right Reserved.
                         </p>
                     </div>
@@ -148,7 +149,8 @@
                         <h5 class="text-white mb-4">Company</h5>
                         <a class="btn btn-link text-white-50" href="{{ url_for('main.about') }}">About Us</a>
                         <a class="btn btn-link text-white-50" href="{{ url_for('main.contact') }}">Contact Us</a>
-                        <a class="btn btn-link text-white-50" href="{{ url_for('main.privacy') }}#process">Privacy Policy</a>
+                        <a class="btn btn-link text-white-50" href="{{ url_for('main.privacy') }}#process">Privacy
+                            Policy</a>
                         <a class="btn btn-link text-white-50" href="{{ url_for('main.terms') }}">Terms & Conditions</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
