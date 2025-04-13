@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <img class="img-fluid border rounded mb-4"
+                            src="{{ url_for('static', filename=job.company_logo) }}" alt="{{ job.company }} logo"
+                            style="max-width: 200px; max-height: 200px; object-fit: contain;">
+                        <h2 class="mb-1">{{ job.title }}</h2>
+                        <p class="text-muted">{{ job.company }}</p>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fa fa-map-marker-alt text-primary me-2"></i>
+                                <span><strong>Location:</strong> {{ job.location }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fa fa-tags text-primary me-2"></i>
+                                <span><strong>Category:</strong> {{ job.category }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="far fa-money-bill-alt text-primary me-2"></i>
+                                <span><strong>Salary:</strong> {{ job.salary or 'Not specified' }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="far fa-calendar-alt text-primary me-2"></i>
+                                <span><strong>Posted:</strong> {{ job.posted_date.strftime('%Y-%m-%d') }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="mb-3">Job Description</h4>
+                        <p class="text-muted">{{ job.description }}</p>
+                    </div>
+                    <div class="text-center">
+                        {% if session['role'] == 'job_seeker' %}
+                        {% if has_applied %}
+                        <button class="btn btn-secondary btn-lg px-5" disabled>Already Applied</button>
+                        {% else %}
+                        <a href="{{ url_for('jobs.apply_job', job_id=job.id) }}" class="btn btn-primary btn-lg px-5">Apply
+                            Now</a>
+                        {% endif %}
+                        {% elif session['role'] == 'admin' %}
+                        <a href="{{ url_for('employer.job_applications', job_id=job.id) }}" class="btn btn-primary btn-lg">
+                            <i class="fa fa-users me-2"></i>View Applications ({{ job.application_count }})
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

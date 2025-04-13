@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h3 class="mb-0">Apply for {{ job.title }}</h3>
+                    <p class="mb-0">at {{ job.company }} - {{ job.location }}</p>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-4">
+                            <p>Please upload your resume (PDF, DOC, DOCX only).</p>
+                            {{ form.resume.label(class="form-label") }}
+                            {{ form.resume(class="form-control") }}
+                            {% if form.resume.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.resume.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-primary btn-lg") }}
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center py-3">
+                    <a href="{{ url_for('jobs.job_detail', job_id=job.id) }}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

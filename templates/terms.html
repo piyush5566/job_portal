@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block hero %}
+<!-- Header Start -->
+<div class="container-xxl py-5 bg-dark page-header mb-5">
+    <div class="container my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Terms & Conditions</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Terms & Conditions</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
+{% endblock %}
+
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="mb-4">Terms and Conditions for StartWorking Job Portal</h2>
+                <p class="mb-4">Last updated: {{ current_date }}</p>
+
+                <h4 class="mb-3">1. Agreement to Terms</h4>
+                <p class="mb-4">By accessing and using StartWorking Job Portal, you agree to be bound by these Terms and
+                    Conditions and our Privacy Policy. If you disagree with any part of these terms, you may not access
+                    our service.</p>
+
+                <h4 class="mb-3">2. User Accounts</h4>
+                <ul class="mb-4">
+                    <li>You must be at least 18 years old to use this service</li>
+                    <li>You are responsible for maintaining the confidentiality of your account</li>
+                    <li>Your account information must be accurate and up-to-date</li>
+                    <li>You may not use another person's account without permission</li>
+                </ul>
+
+                <h4 class="mb-3">3. Job Seeker Responsibilities</h4>
+                <ul class="mb-4">
+                    <li>Provide accurate information in your profile and applications</li>
+                    <li>Submit authentic resumes and documents</li>
+                    <li>Respect the intellectual property rights of others</li>
+                    <li>Not misrepresent your qualifications or experience</li>
+                </ul>
+
+                <h4 class="mb-3">4. Employer Responsibilities</h4>
+                <ul class="mb-4">
+                    <li>Post accurate job descriptions and requirements</li>
+                    <li>Comply with all applicable employment laws</li>
+                    <li>Maintain confidentiality of applicant information</li>
+                    <li>Not discriminate against applicants unlawfully</li>
+                </ul>
+
+                <h4 class="mb-3">5. Prohibited Activities</h4>
+                <p>Users may not:</p>
+                <ul class="mb-4">
+                    <li>Post false or misleading information</li>
+                    <li>Violate any applicable laws or regulations</li>
+                    <li>Harass or discriminate against other users</li>
+                    <li>Use the service for any illegal purpose</li>
+                    <li>Attempt to breach the platform's security</li>
+                </ul>
+
+                <h4 class="mb-3">6. Content Rights</h4>
+                <ul class="mb-4">
+                    <li>Users retain rights to their posted content</li>
+                    <li>We may use posted content for platform operation</li>
+                    <li>We may remove content that violates these terms</li>
+                </ul>
+
+                <h4 class="mb-3">7. Limitation of Liability</h4>
+                <p class="mb-4">StartWorking Job Portal is provided "as is" without warranties of any kind. We are not
+                    responsible for the actions of users or the accuracy of posted content.</p>
+
+                <h4 class="mb-3">8. Changes to Terms</h4>
+                <p class="mb-4">We reserve the right to modify these terms at any time. Users will be notified of
+                    significant changes.</p>
+
+                <h4 class="mb-3">9. Contact Information</h4>
+                <p>For questions about these Terms & Conditions, please contact us at:</p>
+                <ul class="mb-4">
+                    <li>Email: {{ config.MAIL_DEFAULT_SENDER }}</li>
+                    <li>Phone: +91 7853289122</li>
+                    <li>Address: Rashtrapati Bhavan, President's Estate, New Delhi, Delhi 110004, India</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

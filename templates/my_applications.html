@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block hero %}
+<!-- Header Start -->
+<div class="container-xxl py-5 bg-dark page-header mb-5">
+    <div class="container my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">My Applications</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">My Applications</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if applications %}
+    <div class="row">
+        {% for application in applications %}
+        <div class="col-lg-12 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h5 class="card-title mb-1">{{ application.job.title }}</h5>
+                            <p class="card-text mb-1">
+                                <i class="fa fa-building text-primary me-2"></i>{{ application.job.company }}
+                            </p>
+                            <p class="card-text mb-1">
+                                <i class="fa fa-map-marker-alt text-primary me-2"></i>{{ application.job.location }}
+                            </p>
+                            <small class="text-muted">
+                                <i class="far fa-calendar-alt text-primary me-2"></i>
+                                Applied on {{ application.application_date.strftime('%Y-%m-%d') }}
+                            </small>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="badge bg-{{ 'success' if application.status == 'hired' 
+                                                else 'danger' if application.status == 'rejected'
+                                                else 'primary' }} mb-2">
+                                {{ application.status|title }}
+                            </span>
+                        </div>
+                        <div class="col-md-3 text-md-end">
+                            <a href="{{ url_for('jobs.job_detail', job_id=application.job.id) }}" class="btn btn-info mb-2">
+                                <i class="fa fa-eye me-2"></i>View Job
+                            </a>
+                            {% if application.resume_path %}
+                            {% set filename = application.resume_path.replace('static/resumes/', '') %}
+                            <a href="{{ url_for('utils.serve_resume', filename=filename) }}" class="btn btn-primary mb-2"
+                                target="_blank">
+                                <i class="fa fa-file-pdf me-2"></i>View Resume
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <h4 class="mb-4">You have not applied to any jobs yet.</h4>
+        <a href="{{ url_for('jobs.jobs_list') }}" class="btn btn-primary">
+            <i class="fa fa-search me-2"></i>Browse Jobs
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

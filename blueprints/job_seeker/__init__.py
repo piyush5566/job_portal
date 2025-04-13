@@ -1,0 +1,1 @@
+from .routes import job_seeker_bp

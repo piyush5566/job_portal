@@ -1,0 +1,1260 @@
+2025-04-12 12:35:23,490 - job_portal - INFO - User logged out: 1
+2025-04-12 12:35:37,623 - job_portal - WARNING - Failed login attempt for email pgh5566@gmail.com from IP 127.0.0.1
+2025-04-12 12:44:37,680 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-12 12:45:08,349 - job_portal - INFO - User logged out: 1
+2025-04-12 12:52:45,288 - job_portal - WARNING - Failed login attempt for email pgh5544@gmail.com from IP 127.0.0.1
+2025-04-12 12:52:55,536 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-12 12:53:15,605 - job_portal - INFO - User logged out: 1
+2025-04-12 12:54:12,234 - job_portal - ERROR - Registration failed: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO user (username, email, password, role, profile_picture) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('Sharman', 'sharman.verma@gmail.com', '$2b$12$581GHVlRyEVeBOyxIkzste/POhyhUMxGJMphDfhEX1BkG4N6WfR.O', 'job_seeker', 'img/profiles/default.jpg')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-04-12 12:59:29,514 - job_portal - ERROR - Registration failed: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO user (username, email, password, role, profile_picture) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('Sharman', 'sample87@gmail.com', '$2b$12$sS0YPz7fPaYTx6uAAWV/ueUNYLcUDgR/g4diQ4eOcFAM6BLX.BI2.', 'job_seeker', 'img/profiles/default.jpg')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-04-12 13:00:31,139 - job_portal - ERROR - Registration failed: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO user (username, email, password, role, profile_picture) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('Sharman', 'sample87@gmail.com', '$2b$12$xlcAFXpfhuOQOcuUexapS.GsT7dqydJQhNYeIei8Vfu1RwoA/0uC2', 'job_seeker', 'img/profiles/default.jpg')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-04-12 13:01:00,360 - job_portal - ERROR - Registration failed: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO user (username, email, password, role, profile_picture) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('Sharman', 'sample87@gmail.com', '$2b$12$kPNYiySdQ6lUL6Xsvp68GOryDN8TOMB0R/C0P3irCwsaubNBdTqWq', 'job_seeker', 'img/profiles/default.jpg')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-04-12 14:38:03,659 - job_portal - ERROR - Registration failed: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO user (username, email, password, role, profile_picture) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('Sharman', 'sharman.joshi@gmail.com', '$2b$12$1WBz7uIdvJqc50suWM2pb.I3jYF3N.2M40QabRLnurp7ZEP6/hPRq', 'job_seeker', 'img/profiles/default.jpg')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-04-12 14:39:43,545 - job_portal - ERROR - Registration failed: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO user (username, email, password, role, profile_picture) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('Sharman', 'sharman.joshi@gmail.com', '$2b$12$43eBlPWSE1NqMeJsNFJzkuUBcfhTMpa99m0Q9QOCYn4ggJbaCVr3K', 'job_seeker', 'img/profiles/default.jpg')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-04-12 14:45:33,637 - job_portal - INFO - New user registered: sample87@gmail.com
+2025-04-12 14:45:49,791 - job_portal - WARNING - Failed login attempt for email sharman.joshi@gmail.com from IP 127.0.0.1
+2025-04-12 14:45:54,948 - job_portal - WARNING - Failed login attempt for email sharman.joshi@gmail.com from IP 127.0.0.1
+2025-04-12 14:46:13,442 - job_portal - WARNING - Failed login attempt for email sharman.joshi@gmail.com from IP 127.0.0.1
+2025-04-12 14:47:16,395 - job_portal - WARNING - Registration attempt with existing username: Sharman
+2025-04-12 14:49:41,617 - job_portal - ERROR - Registration failed: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: INSERT INTO user (username, email, password, role, profile_picture) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('Sharman', 'sharman.joshi@gmail.com', '$2b$12$nfV01woWrbVg2pM5vHJkW.TB.Z4r8V7VaI1iet9kgWp1PoFGm6GAS', 'job_seeker', 'img/profiles/default.jpg')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-04-12 14:54:11,241 - job_portal - ERROR - Registration failed: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: INSERT INTO user (username, email, password, role, profile_picture) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('Sharman', 'sharman.joshi@gmail.com', '$2b$12$l7gjOs4ktZrNK9GleWreDOThGFY7oNpx6ufm0sCrXZc2MzCL8l3Ma', 'job_seeker', 'img/profiles/default.jpg')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-04-12 15:04:01,138 - job_portal - INFO - New user registered: sharman.joshi@gmail.com
+2025-04-12 15:04:19,127 - job_portal - INFO - Successful login for user 5 from IP 127.0.0.1
+2025-04-12 15:04:42,292 - job_portal - INFO - User logged out: 5
+2025-04-12 15:04:55,282 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-12 15:11:53,957 - job_portal - INFO - User logged out: 1
+2025-04-12 15:12:19,671 - job_portal - WARNING - Failed login attempt for email sharman.joshi@gmail.com from IP 127.0.0.1
+2025-04-12 15:12:27,901 - job_portal - INFO - Successful login for user 5 from IP 127.0.0.1
+2025-04-12 15:12:47,962 - job_portal - INFO - User logged out: 5
+2025-04-12 15:13:23,446 - job_portal - WARNING - Failed login attempt for email shravana.gautam@gmail.com from IP 127.0.0.1
+2025-04-12 15:13:35,193 - job_portal - WARNING - Failed login attempt for email shravan.gautam@gmail.com from IP 127.0.0.1
+2025-04-12 15:14:05,351 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-12 15:20:59,620 - job_portal - INFO - User logged out: 2
+2025-04-12 15:21:41,890 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-12 15:32:54,324 - job_portal - INFO - Home page accessed
+2025-04-12 15:32:56,257 - job_portal - INFO - Contact page accessed
+2025-04-12 15:33:12,604 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-12 15:33:12,609 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-12 15:33:33,669 - job_portal - INFO - Home page accessed
+2025-04-12 15:33:37,054 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Sales & Communication, company: None
+2025-04-12 15:33:37,056 - job_portal - INFO - Found 6 jobs matching the criteria
+2025-04-12 15:48:58,842 - job_portal - INFO - Home page accessed
+2025-04-12 15:49:54,007 - job_portal - INFO - Home page accessed
+2025-04-12 15:53:00,507 - job_portal - INFO - Home page accessed
+2025-04-12 15:55:29,621 - job_portal - INFO - Home page accessed
+2025-04-12 15:58:46,539 - job_portal - INFO - Home page accessed
+2025-04-12 16:01:16,683 - job_portal - INFO - Home page accessed
+2025-04-12 16:01:31,184 - job_portal - INFO - Contact page accessed
+2025-04-12 16:06:11,960 - job_portal - INFO - Home page accessed
+2025-04-12 16:06:13,829 - job_portal - INFO - Contact page accessed
+2025-04-12 16:06:17,167 - job_portal - INFO - About page accessed
+2025-04-12 16:06:24,942 - job_portal - INFO - Home page accessed
+2025-04-12 16:06:26,318 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:06:26,323 - job_portal - INFO - Found 2 applications for user 1
+2025-04-12 16:08:45,875 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:08:45,881 - job_portal - INFO - Found 2 applications for user 1
+2025-04-12 16:08:47,466 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:08:47,467 - job_portal - INFO - Found 2 applications for user 1
+2025-04-12 16:08:48,856 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:08:48,857 - job_portal - INFO - Found 2 applications for user 1
+2025-04-12 16:08:49,033 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:08:49,035 - job_portal - INFO - Found 2 applications for user 1
+2025-04-12 16:08:49,186 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:08:49,187 - job_portal - INFO - Found 2 applications for user 1
+2025-04-12 16:18:45,497 - job_portal - INFO - Home page accessed
+2025-04-12 16:21:08,006 - job_portal - INFO - Home page accessed
+2025-04-12 16:21:13,713 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:21:13,716 - job_portal - INFO - Found 2 applications for user 1
+2025-04-12 16:21:16,935 - job_portal - INFO - Home page accessed
+2025-04-12 16:21:20,870 - job_portal - INFO - About page accessed
+2025-04-12 16:21:30,039 - job_portal - INFO - About page accessed
+2025-04-12 16:21:41,100 - job_portal - INFO - Privacy policy page accessed
+2025-04-12 16:21:45,456 - job_portal - INFO - Terms of service page accessed
+2025-04-12 16:21:48,775 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-12 16:21:48,776 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-12 16:21:51,748 - job_portal - INFO - Job detail page accessed for job_id: 1
+2025-04-12 16:21:51,750 - job_portal - INFO - User 1 has not applied to job 1
+2025-04-12 16:22:48,642 - job_portal - INFO - Home page accessed
+2025-04-12 16:22:55,354 - job_portal - INFO - Home page accessed
+2025-04-12 16:24:17,899 - job_portal - INFO - Home page accessed
+2025-04-12 16:24:20,591 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-12 16:24:20,593 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-12 16:24:22,698 - job_portal - INFO - Job detail page accessed for job_id: 5
+2025-04-12 16:24:22,702 - job_portal - INFO - User 1 has not applied to job 5
+2025-04-12 16:25:27,059 - job_portal - INFO - Home page accessed
+2025-04-12 16:25:29,013 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-12 16:25:29,015 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-12 16:25:32,111 - job_portal - INFO - Job detail page accessed for job_id: 5
+2025-04-12 16:25:32,113 - job_portal - INFO - User 1 has not applied to job 5
+2025-04-12 16:25:46,596 - job_portal - ERROR - Error applying to job 5: save_resume() takes 2 positional arguments but 3 were given
+2025-04-12 16:27:12,462 - job_portal - INFO - Home page accessed
+2025-04-12 16:27:16,044 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-12 16:27:16,045 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-12 16:27:18,628 - job_portal - INFO - Job detail page accessed for job_id: 6
+2025-04-12 16:27:18,631 - job_portal - INFO - User 1 has not applied to job 6
+2025-04-12 16:27:30,090 - job_portal - INFO - Resume saved successfully: static/resumes/1/My_New_Resume.pdf
+2025-04-12 16:27:30,092 - job_portal - INFO - Resume saved for application to job 6 by user 1
+2025-04-12 16:27:30,094 - job_portal - ERROR - Error applying to job 6: 'ApplicationForm' object has no attribute 'cover_letter'
+2025-04-12 16:28:01,240 - job_portal - INFO - Home page accessed
+2025-04-12 16:28:07,904 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-12 16:28:07,905 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-12 16:28:10,556 - job_portal - INFO - Job detail page accessed for job_id: 11
+2025-04-12 16:28:10,561 - job_portal - INFO - User 1 has not applied to job 11
+2025-04-12 16:28:22,937 - job_portal - INFO - Resume saved successfully: static/resumes/1/Resume.pdf
+2025-04-12 16:28:22,938 - job_portal - INFO - Resume saved for application to job 11 by user 1
+2025-04-12 16:28:22,938 - job_portal - ERROR - Error applying to job 11: 'ApplicationForm' object has no attribute 'cover_letter'
+2025-04-12 16:30:02,504 - job_portal - INFO - Home page accessed
+2025-04-12 16:30:05,314 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-12 16:30:05,317 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-12 16:30:07,218 - job_portal - INFO - Job detail page accessed for job_id: 11
+2025-04-12 16:30:07,221 - job_portal - INFO - User 1 has not applied to job 11
+2025-04-12 16:30:15,485 - job_portal - INFO - Resume saved successfully: static/resumes/1/My_New_Resume.pdf
+2025-04-12 16:30:15,486 - job_portal - INFO - Resume saved for application to job 11 by user 1
+2025-04-12 16:30:15,486 - job_portal - ERROR - Error applying to job 11: 'cover_letter' is an invalid keyword argument for Application
+2025-04-12 16:31:33,211 - job_portal - INFO - Home page accessed
+2025-04-12 16:31:35,528 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-12 16:31:35,530 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-12 16:31:37,533 - job_portal - INFO - Job detail page accessed for job_id: 15
+2025-04-12 16:31:37,539 - job_portal - INFO - User 1 has not applied to job 15
+2025-04-12 16:31:49,613 - job_portal - INFO - Resume saved successfully: static/resumes/1/My_New_Resume.pdf
+2025-04-12 16:31:49,614 - job_portal - INFO - Resume saved for application to job 15 by user 1
+2025-04-12 16:31:49,629 - job_portal - INFO - User 1 successfully applied to job 15
+2025-04-12 16:31:49,636 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:31:49,637 - job_portal - INFO - Found 3 applications for user 1
+2025-04-12 16:32:18,475 - job_portal - INFO - Resume access request for file: 1/My_New_Resume.pdf by user 1 with role job_seeker
+2025-04-12 16:32:18,494 - job_portal - INFO - Job seeker 1 accessed their own resume for application 2
+2025-04-12 16:32:18,494 - job_portal - INFO - Job seeker 1 accessed their own resume for application 2
+2025-04-12 16:32:18,494 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-12 16:32:18,494 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-12 16:32:30,435 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:32:30,435 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:32:30,436 - job_portal - INFO - Found 3 applications for user 1
+2025-04-12 16:32:30,436 - job_portal - INFO - Found 3 applications for user 1
+2025-04-12 16:32:31,422 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:32:31,422 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:32:31,423 - job_portal - INFO - Found 3 applications for user 1
+2025-04-12 16:32:31,423 - job_portal - INFO - Found 3 applications for user 1
+2025-04-12 16:32:32,467 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:32:32,467 - job_portal - INFO - User 1 accessing their job applications
+2025-04-12 16:32:32,468 - job_portal - INFO - Found 3 applications for user 1
+2025-04-12 16:32:32,468 - job_portal - INFO - Found 3 applications for user 1
+2025-04-12 16:33:53,904 - job_portal - INFO - User logged out: 1
+2025-04-12 16:33:53,904 - job_portal - INFO - User logged out: 1
+2025-04-12 16:33:53,921 - job_portal - INFO - Home page accessed
+2025-04-12 16:33:53,921 - job_portal - INFO - Home page accessed
+2025-04-12 16:34:11,552 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-12 16:34:11,552 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-12 16:34:11,560 - job_portal - INFO - Home page accessed
+2025-04-12 16:34:11,560 - job_portal - INFO - Home page accessed
+2025-04-12 16:35:11,448 - job_portal - INFO - Home page accessed
+2025-04-12 16:35:16,165 - job_portal - INFO - Employer 3 redirected to job creation form
+2025-04-12 16:39:03,129 - job_portal - INFO - Home page accessed
+2025-04-12 16:39:04,644 - job_portal - INFO - Employer 3 redirected to job creation form
+2025-04-12 16:39:46,805 - job_portal - INFO - Home page accessed
+2025-04-12 16:39:47,920 - job_portal - INFO - Employer 3 redirected to job creation form
+2025-04-12 16:42:02,067 - job_portal - INFO - Home page accessed
+2025-04-12 16:42:03,912 - job_portal - INFO - Employer 3 redirected to job creation form
+2025-04-12 16:47:58,330 - job_portal - WARNING - Invalid salary format attempted: ₹1,20,00,000 - ₹1,50,00,000
+2025-04-12 16:47:58,353 - job_portal - INFO - New job created: 66 - Senior Software Engineer - Python at Tech Innovators Inc. by user 3
+2025-04-12 16:47:58,383 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-12 16:47:58,414 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-12 16:49:21,429 - job_portal - WARNING - Invalid salary format attempted: ₹1,20,00,000 - ₹1,50,00,000
+2025-04-12 16:49:21,433 - job_portal - ERROR - Error creating job: (sqlite3.IntegrityError) UNIQUE constraint failed: job.title, job.company, job.poster_id, job.location
+[SQL: INSERT INTO job (title, description, salary, location, category, company, company_logo, posted_date, poster_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('Senior Software Engineer - Python', "We are seeking an experienced Senior Software Engineer to join our growing team. The ideal candidate will have a strong background in Python developm ... (905 characters truncated) ... e to have:\r\n- Experience with cloud platforms (AWS/GCP)\r\n- Familiarity with DevOps practices\r\n- Knowledge of JavaScript and frontend frameworks", '$₹1,20,00,000 - ₹1,50,00,000', 'New Delhi, India', 'Technology', 'Tech Innovators Inc.', 'img/company_logos/default.png', '2025-04-12 16:41:58.961902', 3)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-04-13 02:45:16,828 - job_portal - INFO - Home page accessed
+2025-04-13 02:45:35,536 - job_portal - INFO - Home page accessed
+2025-04-13 02:45:42,134 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 02:45:42,143 - job_portal - INFO - Home page accessed
+2025-04-13 02:45:55,760 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 02:45:55,763 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 02:45:59,102 - job_portal - INFO - Job detail page accessed for job_id: 11
+2025-04-13 02:45:59,109 - job_portal - INFO - User 1 has not applied to job 11
+2025-04-13 02:46:13,490 - job_portal - INFO - Resume saved successfully: static/resumes/1/Resume.pdf
+2025-04-13 02:46:13,491 - job_portal - INFO - Resume saved for application to job 11 by user 1
+2025-04-13 02:46:13,509 - job_portal - INFO - User 1 successfully applied to job 11
+2025-04-13 02:46:13,517 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 02:46:13,520 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 02:46:21,757 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 02:46:21,760 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 02:46:40,333 - job_portal - INFO - Resume access request for file: 1/Resume.pdf by user 1 with role job_seeker
+2025-04-13 02:46:40,396 - job_portal - INFO - Job seeker 1 accessed their own resume for application 1
+2025-04-13 02:46:40,396 - job_portal - INFO - Job seeker 1 accessed their own resume for application 1
+2025-04-13 02:46:40,397 - job_portal - INFO - Resume file 1/Resume.pdf successfully served
+2025-04-13 02:46:40,397 - job_portal - INFO - Resume file 1/Resume.pdf successfully served
+2025-04-13 02:46:44,041 - job_portal - INFO - Job detail page accessed for job_id: 11
+2025-04-13 02:46:44,041 - job_portal - INFO - Job detail page accessed for job_id: 11
+2025-04-13 02:46:44,046 - job_portal - INFO - User 1 has already applied to job 11
+2025-04-13 02:46:44,046 - job_portal - INFO - User 1 has already applied to job 11
+2025-04-13 02:46:52,262 - job_portal - INFO - User logged out: 1
+2025-04-13 02:46:52,262 - job_portal - INFO - User logged out: 1
+2025-04-13 02:46:52,278 - job_portal - INFO - Home page accessed
+2025-04-13 02:46:52,278 - job_portal - INFO - Home page accessed
+2025-04-13 02:47:24,404 - job_portal - WARNING - Failed login attempt for email sharman.joshi@gmail.com from IP 127.0.0.1
+2025-04-13 02:47:24,404 - job_portal - WARNING - Failed login attempt for email sharman.joshi@gmail.com from IP 127.0.0.1
+2025-04-13 02:47:30,594 - job_portal - INFO - Successful login for user 5 from IP 127.0.0.1
+2025-04-13 02:47:30,594 - job_portal - INFO - Successful login for user 5 from IP 127.0.0.1
+2025-04-13 02:47:30,606 - job_portal - INFO - Home page accessed
+2025-04-13 02:47:30,606 - job_portal - INFO - Home page accessed
+2025-04-13 02:47:42,396 - job_portal - INFO - Home page accessed
+2025-04-13 02:47:42,396 - job_portal - INFO - Home page accessed
+2025-04-13 02:47:49,614 - job_portal - INFO - User 5 accessing their job applications
+2025-04-13 02:47:49,614 - job_portal - INFO - User 5 accessing their job applications
+2025-04-13 02:47:49,616 - job_portal - INFO - Found 0 applications for user 5
+2025-04-13 02:47:49,616 - job_portal - INFO - Found 0 applications for user 5
+2025-04-13 02:47:52,505 - job_portal - INFO - User logged out: 5
+2025-04-13 02:47:52,505 - job_portal - INFO - User logged out: 5
+2025-04-13 02:47:52,514 - job_portal - INFO - Home page accessed
+2025-04-13 02:47:52,514 - job_portal - INFO - Home page accessed
+2025-04-13 02:48:15,203 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-13 02:48:15,203 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-13 02:48:15,212 - job_portal - INFO - Home page accessed
+2025-04-13 02:48:15,212 - job_portal - INFO - Home page accessed
+2025-04-13 02:48:18,491 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 02:48:18,491 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 02:48:18,554 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 02:48:18,554 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:35:18,803 - job_portal - INFO - Home page accessed
+2025-04-13 04:35:18,803 - job_portal - INFO - Home page accessed
+2025-04-13 04:35:20,638 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 04:35:20,638 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 04:35:20,640 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 04:35:20,640 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 04:35:24,085 - job_portal - INFO - Jobs page accessed with filters - location: , category: Entertainment, company: 
+2025-04-13 04:35:24,085 - job_portal - INFO - Jobs page accessed with filters - location: , category: Entertainment, company: 
+2025-04-13 04:35:24,089 - job_portal - INFO - Found 2 jobs matching the criteria
+2025-04-13 04:35:24,089 - job_portal - INFO - Found 2 jobs matching the criteria
+2025-04-13 04:41:34,880 - job_portal - INFO - Home page accessed
+2025-04-13 04:41:41,262 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 04:41:41,320 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:41:44,329 - job_portal - INFO - User 3 accessing applications for job 4
+2025-04-13 04:41:44,335 - job_portal - INFO - Found 1 applications for job 4
+2025-04-13 04:41:46,714 - job_portal - INFO - Resume access request for file: 1/My_New_Resume.pdf by user 3 with role employer
+2025-04-13 04:41:46,758 - job_portal - INFO - Employer 3 accessed resume for application 2 to their job 4
+2025-04-13 04:41:46,758 - job_portal - INFO - Employer 3 accessed resume for application 2 to their job 4
+2025-04-13 04:41:46,759 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-13 04:41:46,759 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-13 04:41:51,632 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 04:41:51,632 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 04:41:51,635 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 04:41:51,635 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 04:41:53,960 - job_portal - INFO - Job detail page accessed for job_id: 9
+2025-04-13 04:41:53,960 - job_portal - INFO - Job detail page accessed for job_id: 9
+2025-04-13 04:41:58,871 - job_portal - INFO - Job detail page accessed for job_id: 7
+2025-04-13 04:41:58,871 - job_portal - INFO - Job detail page accessed for job_id: 7
+2025-04-13 04:42:04,252 - job_portal - INFO - Job detail page accessed for job_id: 2
+2025-04-13 04:42:04,252 - job_portal - INFO - Job detail page accessed for job_id: 2
+2025-04-13 04:42:08,979 - job_portal - INFO - Contact page accessed
+2025-04-13 04:42:08,979 - job_portal - INFO - Contact page accessed
+2025-04-13 04:42:14,106 - job_portal - INFO - User logged out: 3
+2025-04-13 04:42:14,106 - job_portal - INFO - User logged out: 3
+2025-04-13 04:42:14,118 - job_portal - INFO - Home page accessed
+2025-04-13 04:42:14,118 - job_portal - INFO - Home page accessed
+2025-04-13 04:42:42,915 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 04:42:42,915 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 04:42:42,926 - job_portal - INFO - Home page accessed
+2025-04-13 04:42:42,926 - job_portal - INFO - Home page accessed
+2025-04-13 04:46:31,874 - job_portal - INFO - Home page accessed
+2025-04-13 04:46:31,874 - job_portal - INFO - Home page accessed
+2025-04-13 04:46:35,287 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 04:46:35,287 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 04:46:36,895 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 04:46:36,895 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 04:46:36,898 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 04:46:36,898 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 04:46:43,033 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 04:46:43,033 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 04:46:46,519 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 04:46:46,519 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 04:46:46,522 - job_portal - INFO - Retrieved 66 jobs for admin view
+2025-04-13 04:46:46,522 - job_portal - INFO - Retrieved 66 jobs for admin view
+2025-04-13 04:46:54,754 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 04:46:54,754 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 04:46:55,859 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:46:55,859 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:46:55,862 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:46:55,862 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:47:05,496 - job_portal - INFO - Job detail page accessed for job_id: 15
+2025-04-13 04:47:05,496 - job_portal - INFO - Job detail page accessed for job_id: 15
+2025-04-13 04:47:05,499 - job_portal - INFO - Admin viewing job 15 with 1 applications
+2025-04-13 04:47:05,499 - job_portal - INFO - Admin viewing job 15 with 1 applications
+2025-04-13 04:47:09,803 - job_portal - INFO - Resume access request for file: 1/My_New_Resume.pdf by user 2 with role admin
+2025-04-13 04:47:09,803 - job_portal - INFO - Resume access request for file: 1/My_New_Resume.pdf by user 2 with role admin
+2025-04-13 04:47:09,805 - job_portal - INFO - Admin 2 accessed resume for application 2
+2025-04-13 04:47:09,805 - job_portal - INFO - Admin 2 accessed resume for application 2
+2025-04-13 04:47:09,805 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-13 04:47:09,805 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-13 04:47:14,516 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:47:14,516 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:47:14,517 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:47:14,517 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:47:16,182 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:47:16,182 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:47:16,184 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:47:16,184 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:47:18,060 - job_portal - INFO - Resume access request for file: 1/Resume.pdf by user 2 with role admin
+2025-04-13 04:47:18,060 - job_portal - INFO - Resume access request for file: 1/Resume.pdf by user 2 with role admin
+2025-04-13 04:47:18,062 - job_portal - INFO - Admin 2 accessed resume for application 1
+2025-04-13 04:47:18,062 - job_portal - INFO - Admin 2 accessed resume for application 1
+2025-04-13 04:47:18,062 - job_portal - INFO - Resume file 1/Resume.pdf successfully served
+2025-04-13 04:47:18,062 - job_portal - INFO - Resume file 1/Resume.pdf successfully served
+2025-04-13 04:47:25,555 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:47:25,555 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:47:25,557 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:47:25,557 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:47:50,475 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 04:47:50,475 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 04:47:50,480 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 04:47:50,480 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 04:47:53,675 - job_portal - INFO - User 2 accessing applications for job 12
+2025-04-13 04:47:53,675 - job_portal - INFO - User 2 accessing applications for job 12
+2025-04-13 04:47:53,679 - job_portal - INFO - Found 0 applications for job 12
+2025-04-13 04:47:53,679 - job_portal - INFO - Found 0 applications for job 12
+2025-04-13 04:47:57,603 - job_portal - INFO - User logged out: 2
+2025-04-13 04:47:57,603 - job_portal - INFO - User logged out: 2
+2025-04-13 04:47:57,615 - job_portal - INFO - Home page accessed
+2025-04-13 04:47:57,615 - job_portal - INFO - Home page accessed
+2025-04-13 04:48:20,833 - job_portal - WARNING - Failed login attempt for email prahlad.joshi@gmail.com from IP 127.0.0.1
+2025-04-13 04:48:20,833 - job_portal - WARNING - Failed login attempt for email prahlad.joshi@gmail.com from IP 127.0.0.1
+2025-04-13 04:48:32,738 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-13 04:48:32,738 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-13 04:48:32,750 - job_portal - INFO - Home page accessed
+2025-04-13 04:48:32,750 - job_portal - INFO - Home page accessed
+2025-04-13 04:48:35,535 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 04:48:35,535 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 04:48:35,581 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:48:35,581 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:48:37,703 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 04:48:37,703 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 04:48:37,706 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 04:48:37,706 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 04:48:42,990 - job_portal - INFO - User 3 accessing applications for job 4
+2025-04-13 04:48:42,990 - job_portal - INFO - User 3 accessing applications for job 4
+2025-04-13 04:48:42,996 - job_portal - INFO - Found 1 applications for job 4
+2025-04-13 04:48:42,996 - job_portal - INFO - Found 1 applications for job 4
+2025-04-13 04:52:05,289 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 04:52:05,289 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 04:52:05,345 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:52:05,345 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:52:10,746 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 04:52:10,746 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 04:52:10,750 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 04:52:10,750 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 04:52:13,468 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 04:52:13,468 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 04:52:13,517 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:52:13,517 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:52:16,074 - job_portal - INFO - User 3 accessing applications for job 4
+2025-04-13 04:52:16,074 - job_portal - INFO - User 3 accessing applications for job 4
+2025-04-13 04:52:16,077 - job_portal - INFO - Found 1 applications for job 4
+2025-04-13 04:52:16,077 - job_portal - INFO - Found 1 applications for job 4
+2025-04-13 04:55:31,021 - job_portal - INFO - Home page accessed
+2025-04-13 04:55:33,250 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 04:55:33,303 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 04:55:35,168 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 04:55:35,174 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 04:55:45,705 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 04:55:45,708 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 04:55:57,271 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 04:55:57,273 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 04:56:01,477 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 04:56:01,479 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 04:56:26,147 - job_portal - INFO - Resume access request for file: 1/Resume.pdf by user 3 with role employer
+2025-04-13 04:56:26,198 - job_portal - INFO - Employer 3 accessed resume for application 1 to their job 2
+2025-04-13 04:56:26,198 - job_portal - INFO - Employer 3 accessed resume for application 1 to their job 2
+2025-04-13 04:56:26,199 - job_portal - INFO - Resume file 1/Resume.pdf successfully served
+2025-04-13 04:56:26,199 - job_portal - INFO - Resume file 1/Resume.pdf successfully served
+2025-04-13 04:56:31,136 - job_portal - INFO - User logged out: 3
+2025-04-13 04:56:31,136 - job_portal - INFO - User logged out: 3
+2025-04-13 04:56:31,150 - job_portal - INFO - Home page accessed
+2025-04-13 04:56:31,150 - job_portal - INFO - Home page accessed
+2025-04-13 04:56:37,070 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 04:56:37,070 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 04:56:37,080 - job_portal - INFO - Home page accessed
+2025-04-13 04:56:37,080 - job_portal - INFO - Home page accessed
+2025-04-13 04:56:38,764 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 04:56:38,764 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 04:56:38,769 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 04:56:38,769 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 04:56:44,647 - job_portal - INFO - Job detail page accessed for job_id: 2
+2025-04-13 04:56:44,647 - job_portal - INFO - Job detail page accessed for job_id: 2
+2025-04-13 04:56:44,653 - job_portal - INFO - User 1 has already applied to job 2
+2025-04-13 04:56:44,653 - job_portal - INFO - User 1 has already applied to job 2
+2025-04-13 04:56:57,208 - job_portal - INFO - User logged out: 1
+2025-04-13 04:56:57,208 - job_portal - INFO - User logged out: 1
+2025-04-13 04:56:57,228 - job_portal - INFO - Home page accessed
+2025-04-13 04:56:57,228 - job_portal - INFO - Home page accessed
+2025-04-13 04:57:21,547 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 04:57:21,547 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 04:57:21,561 - job_portal - INFO - Home page accessed
+2025-04-13 04:57:21,561 - job_portal - INFO - Home page accessed
+2025-04-13 04:57:24,005 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 04:57:24,005 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 04:57:24,009 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 04:57:24,009 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 04:57:27,035 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 04:57:27,035 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 04:57:27,954 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:57:27,954 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:57:27,958 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:57:27,958 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:57:42,583 - job_portal - INFO - Admin 2 updated application 1 status to reviewed
+2025-04-13 04:57:42,583 - job_portal - INFO - Admin 2 updated application 1 status to reviewed
+2025-04-13 04:57:42,591 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:57:42,591 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:57:42,592 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:57:42,592 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:58:09,102 - job_portal - INFO - Home page accessed
+2025-04-13 04:58:09,102 - job_portal - INFO - Home page accessed
+2025-04-13 04:58:14,394 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 04:58:14,394 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 04:58:14,404 - job_portal - INFO - Home page accessed
+2025-04-13 04:58:14,404 - job_portal - INFO - Home page accessed
+2025-04-13 04:58:16,270 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 04:58:16,270 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 04:58:16,273 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 04:58:16,273 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 04:58:28,705 - job_portal - INFO - Admin 2 updated application 1 status to hired
+2025-04-13 04:58:28,705 - job_portal - INFO - Admin 2 updated application 1 status to hired
+2025-04-13 04:58:28,717 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:58:28,717 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:58:28,718 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:58:28,718 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:58:34,413 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 04:58:34,413 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 04:58:34,415 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 04:58:34,415 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 04:58:55,073 - job_portal - INFO - Admin 2 updated application 1 status to rejected
+2025-04-13 04:58:55,073 - job_portal - INFO - Admin 2 updated application 1 status to rejected
+2025-04-13 04:58:55,084 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:58:55,084 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:58:55,086 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:58:55,086 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:59:02,462 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 04:59:02,462 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 04:59:02,465 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 04:59:02,465 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 04:59:11,849 - job_portal - INFO - Admin 2 updated application 1 status to hired
+2025-04-13 04:59:11,849 - job_portal - INFO - Admin 2 updated application 1 status to hired
+2025-04-13 04:59:11,862 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:59:11,862 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 04:59:11,864 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 04:59:11,864 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:00:28,897 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:00:28,897 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:00:28,901 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:00:28,901 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:00:32,724 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:00:32,724 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:00:32,727 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:00:32,727 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:00:35,027 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:00:35,027 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:00:35,030 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:00:35,030 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:00:36,230 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:00:36,230 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:00:36,234 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:00:36,234 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:00:37,295 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:00:37,295 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:00:37,297 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:00:37,297 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:01:59,756 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:01:59,756 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:01:59,758 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:01:59,758 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:02:04,390 - job_portal - INFO - Home page accessed
+2025-04-13 05:02:04,390 - job_portal - INFO - Home page accessed
+2025-04-13 05:02:21,453 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 05:02:21,453 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 05:02:21,461 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 05:02:21,461 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 05:02:23,894 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:02:23,894 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:02:26,127 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:02:26,127 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:02:27,261 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 05:02:27,261 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 05:02:27,266 - job_portal - INFO - Retrieved 66 jobs for admin view
+2025-04-13 05:02:27,266 - job_portal - INFO - Retrieved 66 jobs for admin view
+2025-04-13 05:02:29,861 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:02:29,861 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:02:31,055 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:02:31,055 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:02:31,057 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:02:31,057 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:04:31,910 - job_portal - INFO - Home page accessed
+2025-04-13 05:04:31,910 - job_portal - INFO - Home page accessed
+2025-04-13 05:04:39,668 - job_portal - INFO - User logged out: 1
+2025-04-13 05:04:39,668 - job_portal - INFO - User logged out: 1
+2025-04-13 05:04:39,685 - job_portal - INFO - Home page accessed
+2025-04-13 05:04:39,685 - job_portal - INFO - Home page accessed
+2025-04-13 05:05:01,169 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-13 05:05:01,169 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-13 05:05:01,184 - job_portal - INFO - Home page accessed
+2025-04-13 05:05:01,184 - job_portal - INFO - Home page accessed
+2025-04-13 05:05:02,990 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 05:05:02,990 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 05:05:03,034 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 05:05:03,034 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 05:05:04,371 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 05:05:04,371 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 05:05:04,374 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 05:05:04,374 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 05:06:41,098 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 05:06:41,098 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 05:06:41,102 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 05:06:41,102 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 05:06:47,402 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 05:06:47,402 - job_portal - INFO - User 3 accessing applications for job 2
+2025-04-13 05:06:47,405 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 05:06:47,405 - job_portal - INFO - Found 1 applications for job 2
+2025-04-13 05:06:59,511 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:06:59,511 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:06:59,514 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:06:59,514 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:07:10,072 - job_portal - INFO - Admin 2 updated application 3 status to hired
+2025-04-13 05:07:10,072 - job_portal - INFO - Admin 2 updated application 3 status to hired
+2025-04-13 05:07:10,082 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:07:10,082 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:07:10,084 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:07:10,084 - job_portal - INFO - Retrieved 4 applications for admin view
+2025-04-13 05:07:34,653 - job_portal - INFO - Home page accessed
+2025-04-13 05:07:34,653 - job_portal - INFO - Home page accessed
+2025-04-13 05:07:37,253 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 05:07:37,253 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 05:07:37,256 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 05:07:37,256 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 05:07:47,170 - job_portal - INFO - API search_jobs called with filters - location: , category: , company: WpK-Drama
+2025-04-13 05:07:47,170 - job_portal - INFO - API search_jobs called with filters - location: , category: , company: WpK-Drama
+2025-04-13 05:07:47,174 - job_portal - INFO - API search_jobs returned 1 results
+2025-04-13 05:07:47,174 - job_portal - INFO - API search_jobs returned 1 results
+2025-04-13 05:07:50,606 - job_portal - INFO - Job detail page accessed for job_id: 12
+2025-04-13 05:07:50,606 - job_portal - INFO - Job detail page accessed for job_id: 12
+2025-04-13 05:07:50,610 - job_portal - INFO - Admin viewing job 12 with 0 applications
+2025-04-13 05:07:50,610 - job_portal - INFO - Admin viewing job 12 with 0 applications
+2025-04-13 05:07:58,131 - job_portal - INFO - API search_jobs called with filters - location: , category: , company: 
+2025-04-13 05:07:58,131 - job_portal - INFO - API search_jobs called with filters - location: , category: , company: 
+2025-04-13 05:07:58,134 - job_portal - INFO - API search_jobs returned 66 results
+2025-04-13 05:07:58,134 - job_portal - INFO - API search_jobs returned 66 results
+2025-04-13 05:08:11,106 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Teaching & Education, company: None
+2025-04-13 05:08:11,106 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Teaching & Education, company: None
+2025-04-13 05:08:11,112 - job_portal - INFO - Found 5 jobs matching the criteria
+2025-04-13 05:08:11,112 - job_portal - INFO - Found 5 jobs matching the criteria
+2025-04-13 05:08:28,481 - job_portal - INFO - Job detail page accessed for job_id: 55
+2025-04-13 05:08:28,481 - job_portal - INFO - Job detail page accessed for job_id: 55
+2025-04-13 05:08:28,486 - job_portal - INFO - Admin viewing job 55 with 0 applications
+2025-04-13 05:08:28,486 - job_portal - INFO - Admin viewing job 55 with 0 applications
+2025-04-13 05:08:32,245 - job_portal - INFO - Job detail page accessed for job_id: 56
+2025-04-13 05:08:32,245 - job_portal - INFO - Job detail page accessed for job_id: 56
+2025-04-13 05:08:32,249 - job_portal - INFO - Admin viewing job 56 with 0 applications
+2025-04-13 05:08:32,249 - job_portal - INFO - Admin viewing job 56 with 0 applications
+2025-04-13 05:08:35,210 - job_portal - INFO - Job detail page accessed for job_id: 57
+2025-04-13 05:08:35,210 - job_portal - INFO - Job detail page accessed for job_id: 57
+2025-04-13 05:08:35,213 - job_portal - INFO - Admin viewing job 57 with 0 applications
+2025-04-13 05:08:35,213 - job_portal - INFO - Admin viewing job 57 with 0 applications
+2025-04-13 05:08:38,308 - job_portal - INFO - Job detail page accessed for job_id: 58
+2025-04-13 05:08:38,308 - job_portal - INFO - Job detail page accessed for job_id: 58
+2025-04-13 05:08:38,312 - job_portal - INFO - Admin viewing job 58 with 0 applications
+2025-04-13 05:08:38,312 - job_portal - INFO - Admin viewing job 58 with 0 applications
+2025-04-13 05:08:41,361 - job_portal - INFO - Job detail page accessed for job_id: 59
+2025-04-13 05:08:41,361 - job_portal - INFO - Job detail page accessed for job_id: 59
+2025-04-13 05:08:41,365 - job_portal - INFO - Admin viewing job 59 with 0 applications
+2025-04-13 05:08:41,365 - job_portal - INFO - Admin viewing job 59 with 0 applications
+2025-04-13 05:09:16,230 - job_portal - INFO - Home page accessed
+2025-04-13 05:09:16,230 - job_portal - INFO - Home page accessed
+2025-04-13 05:12:36,348 - job_portal - INFO - Home page accessed
+2025-04-13 05:12:36,348 - job_portal - INFO - Home page accessed
+2025-04-13 05:13:52,488 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Business Development, company: None
+2025-04-13 05:13:52,488 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Business Development, company: None
+2025-04-13 05:13:52,496 - job_portal - INFO - Found 5 jobs matching the criteria
+2025-04-13 05:13:52,496 - job_portal - INFO - Found 5 jobs matching the criteria
+2025-04-13 05:14:24,220 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Data Science, company: None
+2025-04-13 05:14:24,220 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Data Science, company: None
+2025-04-13 05:14:24,227 - job_portal - INFO - Found 1 jobs matching the criteria
+2025-04-13 05:14:24,227 - job_portal - INFO - Found 1 jobs matching the criteria
+2025-04-13 05:14:27,481 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Technology, company: None
+2025-04-13 05:14:27,481 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Technology, company: None
+2025-04-13 05:14:27,484 - job_portal - INFO - Found 4 jobs matching the criteria
+2025-04-13 05:14:27,484 - job_portal - INFO - Found 4 jobs matching the criteria
+2025-04-13 05:18:35,283 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Project Management, company: None
+2025-04-13 05:18:35,283 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Project Management, company: None
+2025-04-13 05:18:35,294 - job_portal - INFO - Found 6 jobs matching the criteria
+2025-04-13 05:18:35,294 - job_portal - INFO - Found 6 jobs matching the criteria
+2025-04-13 05:18:40,168 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Product Management, company: None
+2025-04-13 05:18:40,168 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Product Management, company: None
+2025-04-13 05:18:40,174 - job_portal - INFO - Found 1 jobs matching the criteria
+2025-04-13 05:18:40,174 - job_portal - INFO - Found 1 jobs matching the criteria
+2025-04-13 05:20:39,411 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Design & Creative, company: None
+2025-04-13 05:20:39,411 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Design & Creative, company: None
+2025-04-13 05:20:39,413 - job_portal - INFO - Found 7 jobs matching the criteria
+2025-04-13 05:20:39,413 - job_portal - INFO - Found 7 jobs matching the criteria
+2025-04-13 05:21:17,133 - job_portal - INFO - Home page accessed
+2025-04-13 05:21:17,133 - job_portal - INFO - Home page accessed
+2025-04-13 05:21:54,625 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Teaching & Education, company: None
+2025-04-13 05:21:54,625 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Teaching & Education, company: None
+2025-04-13 05:21:54,630 - job_portal - INFO - Found 5 jobs matching the criteria
+2025-04-13 05:21:54,630 - job_portal - INFO - Found 5 jobs matching the criteria
+2025-04-13 05:21:58,549 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Writing/Editing, company: None
+2025-04-13 05:21:58,549 - job_portal - INFO - Jobs page accessed with filters - location: None, category: Writing/Editing, company: None
+2025-04-13 05:21:58,551 - job_portal - INFO - Found 1 jobs matching the criteria
+2025-04-13 05:21:58,551 - job_portal - INFO - Found 1 jobs matching the criteria
+2025-04-13 05:22:10,625 - job_portal - INFO - Home page accessed
+2025-04-13 05:22:10,625 - job_portal - INFO - Home page accessed
+2025-04-13 05:22:21,002 - job_portal - INFO - Home page accessed
+2025-04-13 05:22:21,002 - job_portal - INFO - Home page accessed
+2025-04-13 05:30:19,383 - job_portal - INFO - Home page accessed
+2025-04-13 05:30:23,603 - job_portal - INFO - User logged out: 2
+2025-04-13 05:30:23,627 - job_portal - INFO - Home page accessed
+2025-04-13 05:30:28,605 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 05:30:28,618 - job_portal - INFO - Home page accessed
+2025-04-13 05:30:42,637 - job_portal - INFO - Contact page accessed
+2025-04-13 05:31:10,905 - job_portal - INFO - Home page accessed
+2025-04-13 05:32:51,500 - job_portal - INFO - Home page accessed
+2025-04-13 05:33:03,979 - job_portal - INFO - Home page accessed
+2025-04-13 05:33:15,324 - job_portal - INFO - Home page accessed
+2025-04-13 05:34:13,150 - job_portal - INFO - Contact page accessed
+2025-04-13 05:34:29,679 - job_portal - INFO - Contact page accessed
+2025-04-13 05:37:23,280 - job_portal - INFO - Home page accessed
+2025-04-13 05:37:26,016 - job_portal - INFO - Contact page accessed
+2025-04-13 05:41:01,800 - job_portal - INFO - Home page accessed
+2025-04-13 05:41:04,226 - job_portal - INFO - Contact page accessed
+2025-04-13 05:41:26,523 - job_portal - INFO - About page accessed
+2025-04-13 05:41:30,735 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:41:30,739 - job_portal - INFO - Found 4 applications for user 1
+2025-04-13 05:41:38,293 - job_portal - INFO - Home page accessed
+2025-04-13 05:41:46,815 - job_portal - INFO - Contact page accessed
+2025-04-13 05:43:47,834 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 05:43:47,838 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 05:43:50,177 - job_portal - INFO - Job detail page accessed for job_id: 9
+2025-04-13 05:43:50,181 - job_portal - INFO - User 1 has not applied to job 9
+2025-04-13 05:44:02,804 - job_portal - INFO - Resume saved successfully: static/resumes/1/My_New_Resume.pdf
+2025-04-13 05:44:02,804 - job_portal - INFO - Resume saved for application to job 9 by user 1
+2025-04-13 05:44:02,830 - job_portal - INFO - User 1 successfully applied to job 9
+2025-04-13 05:44:02,853 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:44:02,855 - job_portal - INFO - Found 5 applications for user 1
+2025-04-13 05:44:16,942 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 05:44:17,006 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 05:44:20,636 - job_portal - INFO - User 3 accessing applications for job 9
+2025-04-13 05:44:20,640 - job_portal - INFO - Found 1 applications for job 9
+2025-04-13 05:45:03,207 - job_portal - INFO - Resume access request for file: 1/My_New_Resume.pdf by user 3 with role employer
+2025-04-13 05:45:03,244 - job_portal - INFO - Employer 3 accessed resume for application 2 to their job 4
+2025-04-13 05:45:03,244 - job_portal - INFO - Employer 3 accessed resume for application 2 to their job 4
+2025-04-13 05:45:03,245 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-13 05:45:03,245 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-13 05:45:08,110 - job_portal - INFO - User logged out: 3
+2025-04-13 05:45:08,110 - job_portal - INFO - User logged out: 3
+2025-04-13 05:45:08,125 - job_portal - INFO - Home page accessed
+2025-04-13 05:45:08,125 - job_portal - INFO - Home page accessed
+2025-04-13 05:45:24,628 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-13 05:45:24,628 - job_portal - INFO - Successful login for user 3 from IP 127.0.0.1
+2025-04-13 05:45:24,639 - job_portal - INFO - Home page accessed
+2025-04-13 05:45:24,639 - job_portal - INFO - Home page accessed
+2025-04-13 05:45:28,431 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 05:45:28,431 - job_portal - INFO - User 3 accessing their posted jobs
+2025-04-13 05:45:28,492 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 05:45:28,492 - job_portal - INFO - Found 64 jobs posted by user 3
+2025-04-13 05:45:32,751 - job_portal - INFO - User 3 accessing applications for job 9
+2025-04-13 05:45:32,751 - job_portal - INFO - User 3 accessing applications for job 9
+2025-04-13 05:45:32,755 - job_portal - INFO - Found 1 applications for job 9
+2025-04-13 05:45:32,755 - job_portal - INFO - Found 1 applications for job 9
+2025-04-13 05:45:47,961 - job_portal - INFO - Employer 3 redirected to job creation form
+2025-04-13 05:45:47,961 - job_portal - INFO - Employer 3 redirected to job creation form
+2025-04-13 05:46:01,115 - job_portal - INFO - User logged out: 3
+2025-04-13 05:46:01,115 - job_portal - INFO - User logged out: 3
+2025-04-13 05:46:01,129 - job_portal - INFO - Home page accessed
+2025-04-13 05:46:01,129 - job_portal - INFO - Home page accessed
+2025-04-13 05:46:12,966 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 05:46:12,966 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 05:46:12,978 - job_portal - INFO - Home page accessed
+2025-04-13 05:46:12,978 - job_portal - INFO - Home page accessed
+2025-04-13 05:46:17,167 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:46:17,167 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:46:19,035 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:46:19,035 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:46:19,038 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 05:46:19,038 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 05:46:32,002 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:46:32,002 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:46:33,570 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 05:46:33,570 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 05:46:33,574 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 05:46:33,574 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 05:46:35,877 - job_portal - INFO - Admin 2 accessed the new user creation page
+2025-04-13 05:46:35,877 - job_portal - INFO - Admin 2 accessed the new user creation page
+2025-04-13 05:47:57,531 - job_portal - INFO - Admin 2 accessed the new user creation page
+2025-04-13 05:47:57,531 - job_portal - INFO - Admin 2 accessed the new user creation page
+2025-04-13 05:47:57,534 - job_portal - WARNING - Admin user creation form validation failed: {'email': ['Invalid email address.'], 'password': ['Password must contain at least one special character']}
+2025-04-13 05:47:57,534 - job_portal - WARNING - Admin user creation form validation failed: {'email': ['Invalid email address.'], 'password': ['Password must contain at least one special character']}
+2025-04-13 05:50:29,727 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 05:50:29,751 - job_portal - INFO - Found 66 jobs matching the criteria
+2025-04-13 05:50:31,129 - job_portal - INFO - Home page accessed
+2025-04-13 05:50:41,351 - job_portal - INFO - Home page accessed
+2025-04-13 05:50:43,525 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 05:50:43,537 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 05:50:46,113 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 05:50:48,986 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:50:48,990 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 05:54:00,554 - job_portal - INFO - Home page accessed
+2025-04-13 05:54:07,291 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:54:07,295 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 05:54:08,995 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:54:08,997 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 05:54:12,758 - job_portal - INFO - Admin 2 updated application 4 status from 'pending' to 'shortlisted'
+2025-04-13 05:54:12,772 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:54:12,774 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 05:54:20,497 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 05:54:20,500 - job_portal - INFO - Found 5 applications for user 1
+2025-04-13 05:57:30,245 - job_portal - INFO - Home page accessed
+2025-04-13 05:57:44,763 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 05:57:44,768 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 05:57:45,854 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 05:57:45,866 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 06:01:05,885 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 06:01:05,892 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 06:01:07,145 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 06:01:07,150 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 06:01:11,057 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 06:01:11,059 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 06:01:20,793 - job_portal - INFO - Home page accessed
+2025-04-13 06:01:26,397 - job_portal - INFO - Home page accessed
+2025-04-13 06:01:28,319 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 06:01:28,333 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 06:01:30,911 - job_portal - INFO - Job 12 (K-Life at WpK-Drama) deleted by user 2
+2025-04-13 06:01:30,928 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 06:01:30,930 - job_portal - INFO - Found 0 jobs posted by user 2
+2025-04-13 06:01:48,982 - job_portal - INFO - Admin 2 redirected to admin job creation
+2025-04-13 06:01:49,000 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:01:49,004 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:12:54,467 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:12:54,474 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:12:56,070 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:12:56,073 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:13:17,007 - job_portal - INFO - Home page accessed
+2025-04-13 06:13:24,647 - job_portal - INFO - Home page accessed
+2025-04-13 06:13:26,465 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 06:13:31,711 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 06:13:31,715 - job_portal - INFO - Found 0 jobs posted by user 2
+2025-04-13 06:13:38,455 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 06:13:39,558 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:13:39,561 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:13:47,192 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 06:13:47,196 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 06:13:50,640 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 06:13:51,707 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 06:13:51,711 - job_portal - INFO - Retrieved 5 applications for admin view
+2025-04-13 06:13:57,312 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 06:13:58,461 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:13:58,466 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:18:46,498 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:18:46,523 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:25:55,177 - job_portal - ERROR - Error updating job 15: 'JobForm' object has no attribute 'requirements'
+2025-04-13 06:28:05,971 - job_portal - INFO - Admin 2 updated job 15: Social Media Manager at Social Buzz Agency
+2025-04-13 06:28:05,989 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:28:05,995 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:29:21,587 - job_portal - INFO - Home page accessed
+2025-04-13 06:29:25,877 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:29:25,881 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:29:41,646 - job_portal - INFO - Admin 2 updated job 25: Technical Support Specialist at Tech Support Pro
+2025-04-13 06:29:41,656 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:29:41,659 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:42:57,580 - job_portal - INFO - Home page accessed
+2025-04-13 06:43:00,372 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 06:43:00,375 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 06:43:03,053 - job_portal - INFO - Job detail page accessed for job_id: 5
+2025-04-13 06:43:03,062 - job_portal - INFO - User 1 has not applied to job 5
+2025-04-13 06:43:26,839 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 06:43:26,847 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 06:43:30,543 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 06:43:32,625 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 06:43:32,629 - job_portal - INFO - Found 0 jobs posted by user 2
+2025-04-13 06:43:33,772 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 06:43:33,777 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 06:43:36,995 - job_portal - INFO - Job detail page accessed for job_id: 9
+2025-04-13 06:43:37,004 - job_portal - INFO - Admin viewing job 9 with 1 applications
+2025-04-13 06:43:38,807 - job_portal - INFO - User 2 accessing applications for job 9
+2025-04-13 06:43:38,812 - job_portal - INFO - Found 1 applications for job 9
+2025-04-13 06:43:45,616 - job_portal - INFO - Employer 2 updated application 5 status to hired
+2025-04-13 06:43:45,640 - job_portal - INFO - User 2 accessing applications for job 9
+2025-04-13 06:43:45,643 - job_portal - INFO - Found 1 applications for job 9
+2025-04-13 06:48:25,756 - job_portal - INFO - Home page accessed
+2025-04-13 06:48:34,219 - job_portal - INFO - Home page accessed
+2025-04-13 06:48:59,910 - job_portal - INFO - Home page accessed
+2025-04-13 06:49:31,918 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 06:49:31,930 - job_portal - INFO - Home page accessed
+2025-04-13 06:49:36,289 - job_portal - INFO - User logged out: 1
+2025-04-13 06:49:36,311 - job_portal - INFO - Home page accessed
+2025-04-13 06:50:37,750 - job_portal - INFO - Admin 2 accessed the new user creation page
+2025-04-13 06:50:38,501 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 06:50:38,505 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 06:50:41,155 - job_portal - INFO - Admin 2 accessed the new user creation page
+2025-04-13 06:51:35,511 - job_portal - INFO - Admin 2 accessed the new user creation page
+2025-04-13 06:51:35,514 - job_portal - WARNING - Admin user creation form validation failed: {'password': ['Password must contain at least one special character']}
+2025-04-13 06:53:48,080 - job_portal - INFO - Admin 2 accessed the new user creation page
+2025-04-13 06:53:48,583 - job_portal - INFO - Admin 2 created new user: 6 (Mike, mike.albert@gmail.com) with role job_seeker
+2025-04-13 06:53:48,601 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 06:53:48,603 - job_portal - INFO - Retrieved 6 users for admin view
+2025-04-13 06:53:59,818 - job_portal - ERROR - Error updating user 5: 'UserEditForm' object has no attribute 'password'
+2025-04-13 06:57:59,014 - job_portal - INFO - Admin 2 updated user 5: Sharman, sharman.joshi@gmail.com, role: employer
+2025-04-13 06:57:59,030 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 06:57:59,038 - job_portal - INFO - Retrieved 6 users for admin view
+2025-04-13 06:58:31,868 - job_portal - INFO - Admin 2 updated user 4: Sharman, sample87@gmail.com, role: employer
+2025-04-13 06:58:31,885 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 06:58:31,887 - job_portal - INFO - Retrieved 6 users for admin view
+2025-04-13 06:58:58,668 - job_portal - INFO - Home page accessed
+2025-04-13 06:59:05,781 - job_portal - INFO - User logged out: 2
+2025-04-13 06:59:05,793 - job_portal - INFO - Home page accessed
+2025-04-13 07:00:07,516 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 07:00:07,522 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 07:05:54,109 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 07:05:54,113 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 07:06:00,979 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 07:06:00,991 - job_portal - INFO - Home page accessed
+2025-04-13 07:06:13,872 - job_portal - INFO - User logged out: 1
+2025-04-13 07:06:13,887 - job_portal - INFO - Home page accessed
+2025-04-13 07:06:16,320 - job_portal - INFO - Home page accessed
+2025-04-13 07:09:07,776 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 07:09:07,783 - job_portal - INFO - Home page accessed
+2025-04-13 07:09:15,584 - job_portal - INFO - Home page accessed
+2025-04-13 07:09:26,729 - job_portal - INFO - Home page accessed
+2025-04-13 07:09:39,565 - job_portal - INFO - Home page accessed
+2025-04-13 07:09:43,874 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 07:09:43,883 - job_portal - INFO - Home page accessed
+2025-04-13 07:10:50,370 - job_portal - INFO - Home page accessed
+2025-04-13 08:26:24,057 - job_portal - INFO - Home page accessed
+2025-04-13 08:26:29,764 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 08:26:29,771 - job_portal - INFO - Home page accessed
+2025-04-13 08:26:38,561 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 08:26:38,568 - job_portal - INFO - Found 5 applications for user 1
+2025-04-13 08:26:44,636 - job_portal - INFO - Contact page accessed
+2025-04-13 08:26:53,873 - job_portal - INFO - Contact page accessed
+2025-04-13 08:26:53,875 - job_portal - INFO - Contact form submitted by Piyush Kumar <pgh5544@gmail.com> with subject: Job chahiye
+2025-04-13 08:26:53,876 - job_portal - ERROR - Failed to send contact email from pgh5544@gmail.com: [Errno 111] Connection refused
+2025-04-13 08:28:56,242 - job_portal - INFO - Contact page accessed
+2025-04-13 08:28:56,244 - job_portal - INFO - Contact form submitted by Piyush Kumar <pgh5544@gmail.com> with subject: Job chahiye
+2025-04-13 08:28:56,245 - job_portal - ERROR - Failed to send contact email from pgh5544@gmail.com: [Errno 111] Connection refused
+2025-04-13 08:54:10,571 - job_portal - ERROR - Failed to initialize mail: 'NoneType' object is not callable
+2025-04-13 09:01:21,414 - job_portal - ERROR - Failed to initialize mail: 'NoneType' object is not callable
+2025-04-13 09:04:30,976 - job_portal - ERROR - Failed to initialize mail: 'NoneType' object is not callable
+2025-04-13 09:13:09,138 - job_portal - INFO - Contact page accessed
+2025-04-13 09:13:09,167 - job_portal - INFO - Contact form submitted by Piyush Kumar <pgh5544@gmail.com> with subject: Job chahiye
+2025-04-13 09:13:12,871 - job_portal - INFO - Contact page accessed
+2025-04-13 09:13:12,872 - job_portal - INFO - Contact form submitted by Piyush Kumar <pgh5544@gmail.com> with subject: Job chahiye
+2025-04-13 09:13:13,089 - job_portal - INFO - Contact email sent successfully from pgh5544@gmail.com (attempt 1)
+2025-04-13 09:13:16,324 - job_portal - INFO - Contact email sent successfully from pgh5544@gmail.com (attempt 1)
+2025-04-13 09:13:16,341 - job_portal - INFO - Contact page accessed
+2025-04-13 09:14:21,678 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 09:14:21,697 - job_portal - INFO - Found 5 applications for user 1
+2025-04-13 09:14:48,482 - job_portal - INFO - User 1 attempting to change username from Piyush to Piyush_Kumar
+2025-04-13 09:14:48,517 - job_portal - INFO - Profile updated for user 1. Changes: username: Piyush->Piyush_Kumar, email: pgh5544@gmail.com->pgh5544@gmail.com
+2025-04-13 09:14:53,759 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 09:14:53,762 - job_portal - INFO - Found 5 applications for user 1
+2025-04-13 09:14:57,666 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 09:14:57,669 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 09:15:02,301 - job_portal - INFO - Job detail page accessed for job_id: 9
+2025-04-13 09:15:02,308 - job_portal - INFO - User 1 has already applied to job 9
+2025-04-13 09:15:08,063 - job_portal - INFO - Job detail page accessed for job_id: 13
+2025-04-13 09:15:08,066 - job_portal - INFO - User 1 has not applied to job 13
+2025-04-13 09:15:22,934 - job_portal - INFO - Resume saved successfully: static/resumes/1/Resume.pdf
+2025-04-13 09:15:22,934 - job_portal - INFO - Resume saved for application to job 13 by user 1
+2025-04-13 09:15:22,949 - job_portal - INFO - User 1 successfully applied to job 13
+2025-04-13 09:15:22,957 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 09:15:22,958 - job_portal - INFO - Found 6 applications for user 1
+2025-04-13 09:15:33,054 - job_portal - INFO - Contact page accessed
+2025-04-13 09:15:40,592 - job_portal - INFO - User logged out: 1
+2025-04-13 09:15:40,610 - job_portal - INFO - Home page accessed
+2025-04-13 09:16:04,792 - job_portal - WARNING - Failed login attempt for email sharman.joshi@gmail.com from IP 127.0.0.1
+2025-04-13 09:16:28,907 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 09:16:28,914 - job_portal - INFO - Home page accessed
+2025-04-13 09:16:42,136 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 09:16:42,140 - job_portal - INFO - Found 0 jobs posted by user 2
+2025-04-13 09:19:52,891 - job_portal - WARNING - Invalid salary format attempted: ₹1,20,00,000 - ₹1,50,00,000
+2025-04-13 09:19:52,896 - job_portal - INFO - Company logo saved successfully: 04b4e38666bc4381.png
+2025-04-13 09:19:52,896 - job_portal - INFO - Company logo uploaded for new job: 04b4e38666bc4381.png
+2025-04-13 09:19:52,919 - job_portal - INFO - New job created: 67 - Senior Python Developer at Tech Innovators Inc. by user 2
+2025-04-13 09:19:52,928 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 09:19:52,935 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 09:20:09,919 - job_portal - INFO - Contact page accessed
+2025-04-13 09:20:15,531 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:20:17,398 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 09:20:17,401 - job_portal - INFO - Retrieved 6 users for admin view
+2025-04-13 09:20:24,322 - job_portal - INFO - Admin 2 deleted user 5: Sharman, sharman.joshi@gmail.com
+2025-04-13 09:20:24,331 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 09:20:24,332 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 09:20:28,753 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:20:31,763 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:20:31,765 - job_portal - INFO - Retrieved 66 jobs for admin view
+2025-04-13 09:20:39,988 - job_portal - INFO - Admin 2 deleted job 18: Brand Manager at Brand Leaders
+2025-04-13 09:20:39,994 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:20:39,995 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:21:35,373 - job_portal - INFO - Admin 2 updated job 21: Growth Marketing Manager at Growth Hackers Inc
+2025-04-13 09:21:35,380 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:21:35,382 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:21:49,998 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:21:51,910 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 09:21:51,913 - job_portal - INFO - Retrieved 6 applications for admin view
+2025-04-13 09:21:59,249 - job_portal - INFO - Admin 2 updated application 2 status from 'applied' to 'shortlisted'
+2025-04-13 09:21:59,263 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 09:21:59,264 - job_portal - INFO - Retrieved 6 applications for admin view
+2025-04-13 09:22:03,060 - job_portal - INFO - Home page accessed
+2025-04-13 09:22:05,029 - job_portal - INFO - Admin 2 redirected to admin job creation
+2025-04-13 09:22:05,041 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:22:05,044 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:22:15,531 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:22:17,305 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:22:17,307 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:22:28,620 - job_portal - INFO - Admin 2 redirected to admin job creation
+2025-04-13 09:22:28,634 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:22:28,636 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:22:38,014 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 09:22:38,015 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 09:22:40,793 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 09:22:40,795 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 09:23:57,914 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:24:00,527 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:24:00,529 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:28:08,268 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:28:08,276 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:28:34,462 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:28:36,103 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 09:28:36,105 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 09:28:42,313 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:28:45,405 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:28:45,406 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:28:56,716 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:28:58,406 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 09:28:58,407 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 09:29:04,850 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:29:06,408 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:29:06,410 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:34:08,748 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:34:08,753 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:38:31,485 - job_portal - INFO - Home page accessed
+2025-04-13 09:38:36,245 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:38:38,299 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:38:38,301 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:51:20,373 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 09:51:20,386 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 09:51:24,062 - job_portal - INFO - Job 67 (Senior Python Developer at Tech Innovators Inc.) deleted by user 2
+2025-04-13 09:51:24,068 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 09:51:24,071 - job_portal - INFO - Found 0 jobs posted by user 2
+2025-04-13 09:51:26,247 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:51:27,916 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:51:27,919 - job_portal - INFO - Retrieved 64 jobs for admin view
+2025-04-13 09:52:26,023 - job_portal - ERROR - Job creation failed: name 'save_company_logo' is not defined
+2025-04-13 09:54:20,725 - job_portal - INFO - Home page accessed
+2025-04-13 09:54:25,087 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 09:54:27,097 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:54:27,100 - job_portal - INFO - Retrieved 64 jobs for admin view
+2025-04-13 09:54:42,770 - job_portal - INFO - Company logo saved successfully: 5fdd0c98a8d04f05.png
+2025-04-13 09:54:42,771 - job_portal - INFO - Saved company logo: 5fdd0c98a8d04f05.png
+2025-04-13 09:54:42,785 - job_portal - INFO - Admin 2 created new job ID 67
+2025-04-13 09:54:42,792 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:54:42,793 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:54:56,056 - job_portal - INFO - Job detail page accessed for job_id: 67
+2025-04-13 09:54:56,073 - job_portal - INFO - Admin viewing job 67 with 0 applications
+2025-04-13 09:55:02,317 - job_portal - INFO - Job detail page accessed for job_id: 67
+2025-04-13 09:55:02,320 - job_portal - INFO - Admin viewing job 67 with 0 applications
+2025-04-13 09:55:46,765 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 09:55:46,779 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 09:55:50,619 - job_portal - INFO - Job detail page accessed for job_id: 59
+2025-04-13 09:55:50,622 - job_portal - INFO - Admin viewing job 59 with 0 applications
+2025-04-13 10:00:09,466 - job_portal - INFO - Home page accessed
+2025-04-13 10:00:11,861 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 10:00:11,865 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 10:03:11,395 - job_portal - INFO - Job 67 (Senior Python Developer at Tech Innovators Inc.) deleted by user 2
+2025-04-13 10:03:11,406 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 10:03:11,407 - job_portal - INFO - Found 0 jobs posted by user 2
+2025-04-13 10:09:01,205 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 10:09:03,139 - job_portal - INFO - Home page accessed
+2025-04-13 10:09:08,597 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 10:09:10,418 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 10:09:10,420 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 10:09:50,434 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 10:09:52,983 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 10:09:52,985 - job_portal - INFO - Retrieved 64 jobs for admin view
+2025-04-13 10:10:04,333 - job_portal - INFO - Admin 2 accessed the users management page
+2025-04-13 10:10:04,336 - job_portal - INFO - Retrieved 5 users for admin view
+2025-04-13 10:10:59,381 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 10:11:00,928 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 10:11:00,929 - job_portal - INFO - Retrieved 64 jobs for admin view
+2025-04-13 10:11:03,180 - job_portal - INFO - Home page accessed
+2025-04-13 10:11:05,595 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 10:11:05,597 - job_portal - INFO - Found 64 jobs matching the criteria
+2025-04-13 10:11:06,803 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 10:11:06,810 - job_portal - INFO - Found 0 jobs posted by user 2
+2025-04-13 10:11:26,690 - job_portal - WARNING - Invalid salary format attempted: ₹1,20,00,000 - ₹1,50,00,000
+2025-04-13 10:11:26,691 - job_portal - INFO - Company logo saved successfully: b2ff50965190494c.png
+2025-04-13 10:11:26,691 - job_portal - INFO - Company logo uploaded for new job: b2ff50965190494c.png
+2025-04-13 10:11:26,708 - job_portal - INFO - New job created: 67 - Senior Python Developer at Tech Innovators Inc. by user 2
+2025-04-13 10:11:26,717 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 10:11:26,722 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 10:11:34,526 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 10:11:34,528 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 10:11:41,145 - job_portal - INFO - Job detail page accessed for job_id: 67
+2025-04-13 10:11:41,146 - job_portal - INFO - Admin viewing job 67 with 0 applications
+2025-04-13 10:11:45,350 - job_portal - INFO - Home page accessed
+2025-04-13 10:13:16,766 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 10:13:16,770 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 10:13:18,431 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 10:13:20,504 - job_portal - INFO - Admin 2 accessed the applications management page
+2025-04-13 10:13:20,505 - job_portal - INFO - Retrieved 6 applications for admin view
+2025-04-13 10:13:24,414 - job_portal - INFO - Resume access request for file: 1/Resume.pdf by user 2 with role admin
+2025-04-13 10:13:24,438 - job_portal - INFO - Admin 2 accessed resume for application 1
+2025-04-13 10:13:24,438 - job_portal - INFO - Admin 2 accessed resume for application 1
+2025-04-13 10:13:24,438 - job_portal - INFO - Resume file 1/Resume.pdf successfully served
+2025-04-13 10:13:24,438 - job_portal - INFO - Resume file 1/Resume.pdf successfully served
+2025-04-13 10:14:01,276 - job_portal - INFO - User 2 attempting to change email from sravana.gautam@gmail.com to sravana.gautam.kashyap@gmail.com
+2025-04-13 10:14:01,276 - job_portal - INFO - User 2 attempting to change email from sravana.gautam@gmail.com to sravana.gautam.kashyap@gmail.com
+2025-04-13 10:14:01,277 - job_portal - INFO - Processing profile picture upload for user 2
+2025-04-13 10:14:01,277 - job_portal - INFO - Processing profile picture upload for user 2
+2025-04-13 10:14:01,341 - job_portal - INFO - Profile updated for user 2. Changes: username: Sravana->Sravana, email: sravana.gautam@gmail.com->sravana.gautam.kashyap@gmail.com
+2025-04-13 10:14:01,341 - job_portal - INFO - Profile updated for user 2. Changes: username: Sravana->Sravana, email: sravana.gautam@gmail.com->sravana.gautam.kashyap@gmail.com
+2025-04-13 10:14:05,856 - job_portal - INFO - Home page accessed
+2025-04-13 10:14:05,856 - job_portal - INFO - Home page accessed
+2025-04-13 10:14:09,615 - job_portal - INFO - About page accessed
+2025-04-13 10:14:09,615 - job_portal - INFO - About page accessed
+2025-04-13 10:16:22,629 - job_portal - INFO - Home page accessed
+2025-04-13 10:16:22,629 - job_portal - INFO - Home page accessed
+2025-04-13 10:16:26,690 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 10:16:26,690 - job_portal - INFO - Jobs page accessed with filters - location: None, category: None, company: None
+2025-04-13 10:16:26,693 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 10:16:26,693 - job_portal - INFO - Found 65 jobs matching the criteria
+2025-04-13 10:16:36,364 - job_portal - INFO - Contact page accessed
+2025-04-13 10:16:36,364 - job_portal - INFO - Contact page accessed
+2025-04-13 10:16:43,027 - job_portal - INFO - Home page accessed
+2025-04-13 10:16:43,027 - job_portal - INFO - Home page accessed
+2025-04-13 10:51:54,799 - job_portal - INFO - Home page accessed
+2025-04-13 10:51:58,689 - job_portal - INFO - User logged out: 2
+2025-04-13 10:51:58,715 - job_portal - INFO - Home page accessed
+2025-04-13 10:55:43,984 - job_portal - INFO - Home page accessed
+2025-04-13 10:57:34,806 - job_portal - INFO - Home page accessed
+2025-04-13 12:13:59,824 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:14:28,076 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:14:35,424 - job_portal - INFO - Home page accessed
+2025-04-13 12:16:36,335 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:16:39,849 - job_portal - INFO - Home page accessed
+2025-04-13 12:16:47,398 - job_portal - WARNING - Failed login attempt for email sravana.gautam@gmail.com from IP 127.0.0.1
+2025-04-13 12:17:18,841 - job_portal - INFO - Successful login for user 2 from IP 127.0.0.1
+2025-04-13 12:17:18,853 - job_portal - INFO - Home page accessed
+2025-04-13 12:17:26,396 - job_portal - INFO - Admin 2 accessed the admin dashboard
+2025-04-13 12:17:30,485 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 12:17:30,489 - job_portal - INFO - Retrieved 65 jobs for admin view
+2025-04-13 12:17:34,026 - job_portal - INFO - Admin 2 deleted job 19: Marketing Coordinator at Marketing Solutions
+2025-04-13 12:17:34,036 - job_portal - INFO - Admin 2 accessed the jobs management page
+2025-04-13 12:17:34,037 - job_portal - INFO - Retrieved 64 jobs for admin view
+2025-04-13 12:17:43,122 - job_portal - INFO - Profile updated for user 2. Changes: username: Sravana->Sravana, email: sravana.gautam.kashyap@gmail.com->sravana.gautam.kashyap@gmail.com
+2025-04-13 12:17:45,315 - job_portal - INFO - Home page accessed
+2025-04-13 12:17:47,933 - job_portal - INFO - User 2 accessing their posted jobs
+2025-04-13 12:17:47,943 - job_portal - INFO - Found 1 jobs posted by user 2
+2025-04-13 12:17:52,642 - job_portal - INFO - User logged out: 2
+2025-04-13 12:17:52,666 - job_portal - INFO - Home page accessed
+2025-04-13 12:18:00,374 - job_portal - INFO - Successful login for user 1 from IP 127.0.0.1
+2025-04-13 12:18:00,381 - job_portal - INFO - Home page accessed
+2025-04-13 12:18:02,670 - job_portal - INFO - Contact page accessed
+2025-04-13 12:18:10,305 - job_portal - INFO - Contact page accessed
+2025-04-13 12:18:10,307 - job_portal - INFO - Contact form submitted by Piyush Kumar <pgh5544@gmail.com> with subject: Job chahiye
+2025-04-13 12:18:14,067 - job_portal - INFO - Contact email sent successfully from pgh5544@gmail.com (attempt 1)
+2025-04-13 12:18:14,082 - job_portal - INFO - Contact page accessed
+2025-04-13 12:20:53,595 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:20:53,646 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:20:53,709 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:20:53,714 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:23:45,484 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:23:45,563 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:23:45,614 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:23:45,683 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:24:16,541 - job_portal - INFO - Home page accessed
+2025-04-13 12:24:45,488 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:24:45,489 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:24:45,568 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:24:45,572 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:24:45,618 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:24:45,621 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:24:45,687 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:24:45,688 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:25:45,486 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:25:45,487 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:25:45,567 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:25:45,568 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:25:45,617 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:25:45,618 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:25:45,685 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:25:45,685 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:28:18,445 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:28:18,535 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:28:18,577 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:28:18,581 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:28:48,286 - job_portal - INFO - Home page accessed
+2025-04-13 12:29:18,448 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:29:18,450 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:29:18,540 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:29:18,542 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:29:18,581 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:29:18,582 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:29:18,584 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:29:18,585 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:30:18,447 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:30:18,448 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:30:18,538 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:30:18,539 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:30:18,579 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:30:18,581 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:30:18,583 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:30:18,584 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:31:18,448 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:31:18,450 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:31:18,540 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:31:18,541 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:31:18,581 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:31:18,583 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:31:18,585 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:31:18,587 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:32:18,447 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:32:18,447 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:32:18,538 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:32:18,539 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:32:18,579 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:32:18,580 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:32:18,583 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:32:18,583 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:33:18,448 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:33:18,449 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:33:18,540 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:33:18,541 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:33:18,580 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:33:18,581 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:33:18,583 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:33:18,584 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:37:07,072 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 12:37:12,235 - job_portal - INFO - Home page accessed
+2025-04-13 12:37:30,236 - job_portal - INFO - Contact page accessed
+2025-04-13 12:38:07,075 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:38:07,076 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:38:28,962 - job_portal - WARNING - Form validation failed: {'password': ['Password must contain at least one special character']}
+2025-04-13 12:38:42,808 - job_portal - INFO - New user registered: maria.sharapova@gmail.com
+2025-04-13 12:38:56,060 - job_portal - INFO - Successful login for user 7 from IP 127.0.0.1
+2025-04-13 12:38:56,066 - job_portal - INFO - Home page accessed
+2025-04-13 12:39:07,075 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 12:39:07,076 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 12:39:07,123 - job_portal - INFO - Home page accessed
+2025-04-13 14:22:49,586 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 14:23:00,840 - job_portal - INFO - Home page accessed
+2025-04-13 14:23:49,590 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:23:49,590 - job_portal - INFO - Scheduler: Found 2 files. Uploading to GCS bucket 'job_portal_app'...
+2025-04-13 14:23:52,651 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/Resume.pdf to GCS
+2025-04-13 14:23:53,923 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/My_New_Resume.pdf to GCS
+2025-04-13 14:23:53,923 - job_portal - INFO - Scheduler: Upload to GCS complete.
+2025-04-13 14:23:53,923 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 14:24:49,591 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:24:49,592 - job_portal - INFO - Scheduler: Found 2 files. Uploading to GCS bucket 'job_portal_app'...
+2025-04-13 14:24:51,902 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/Resume.pdf to GCS
+2025-04-13 14:24:53,259 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/My_New_Resume.pdf to GCS
+2025-04-13 14:24:53,259 - job_portal - INFO - Scheduler: Upload to GCS complete.
+2025-04-13 14:24:53,259 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 14:25:49,589 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:25:49,589 - job_portal - INFO - Scheduler: Found 2 files. Uploading to GCS bucket 'job_portal_app'...
+2025-04-13 14:25:51,874 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/Resume.pdf to GCS
+2025-04-13 14:25:53,063 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/My_New_Resume.pdf to GCS
+2025-04-13 14:25:53,064 - job_portal - INFO - Scheduler: Upload to GCS complete.
+2025-04-13 14:25:53,064 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 14:26:49,591 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:26:49,592 - job_portal - INFO - Scheduler: Found 2 files. Uploading to GCS bucket 'job_portal_app'...
+2025-04-13 14:26:51,955 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/Resume.pdf to GCS
+2025-04-13 14:26:53,024 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/My_New_Resume.pdf to GCS
+2025-04-13 14:26:53,024 - job_portal - INFO - Scheduler: Upload to GCS complete.
+2025-04-13 14:26:53,024 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 14:27:49,589 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:27:49,590 - job_portal - INFO - Scheduler: Found 2 files. Uploading to GCS bucket 'job_portal_app'...
+2025-04-13 14:27:51,708 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/Resume.pdf to GCS
+2025-04-13 14:27:52,888 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/My_New_Resume.pdf to GCS
+2025-04-13 14:27:52,888 - job_portal - INFO - Scheduler: Upload to GCS complete.
+2025-04-13 14:27:52,888 - job_portal - INFO - Scheduler: Only 2 files found. Skipping upload.
+2025-04-13 14:31:35,546 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 14:31:39,595 - job_portal - INFO - Home page accessed
+2025-04-13 14:32:35,549 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:32:35,551 - job_portal - INFO - Scheduler: Found 2 files. Uploading to GCS bucket 'job_portal_app'...
+2025-04-13 14:32:37,682 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/Resume.pdf to GCS
+2025-04-13 14:32:38,217 - job_portal - INFO - Scheduler: Deleted local file static/resumes/1/Resume.pdf
+2025-04-13 14:32:39,689 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/My_New_Resume.pdf to GCS
+2025-04-13 14:32:39,991 - job_portal - INFO - Scheduler: Deleted local file static/resumes/1/My_New_Resume.pdf
+2025-04-13 14:32:39,996 - job_portal - INFO - Scheduler: Removed empty directory static/resumes/1
+2025-04-13 14:32:39,999 - job_portal - INFO - Scheduler: Removed empty directory static/resumes
+2025-04-13 14:32:40,000 - job_portal - INFO - Scheduler: Upload to GCS and local cleanup complete.
+2025-04-13 14:33:06,101 - job_portal - INFO - User 7 accessing their job applications
+2025-04-13 14:33:06,117 - job_portal - INFO - Found 0 applications for user 7
+2025-04-13 14:33:09,707 - job_portal - INFO - User logged out: 7
+2025-04-13 14:33:10,021 - job_portal - INFO - Home page accessed
+2025-04-13 14:33:35,549 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:33:35,550 - job_portal - INFO - Scheduler: No files found in resumes folder.
+2025-04-13 14:34:07,660 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 14:34:10,993 - job_portal - INFO - Home page accessed
+2025-04-13 14:35:01,060 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 14:35:01,067 - job_portal - INFO - Found 6 applications for user 1
+2025-04-13 14:35:02,963 - job_portal - INFO - Resume access request for file: 1/Resume.pdf by user 1 with role job_seeker
+2025-04-13 14:35:02,964 - app - ERROR - Exception on /resume/1/Resume.pdf [GET]
+Traceback (most recent call last):
+  File "/home/gagan/pF/job_portal/.venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gagan/pF/job_portal/.venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gagan/pF/job_portal/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gagan/pF/job_portal/.venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gagan/pF/job_portal/blueprints/auth/routes.py", line 39, in decorated_function
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/gagan/pF/job_portal/blueprints/utils/routes.py", line 46, in serve_resume
+    from app_blueprint import ENABLE_GCS_UPLOAD, GCS_BUCKET_NAME
+ModuleNotFoundError: No module named 'app_blueprint'
+2025-04-13 14:35:07,665 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:35:07,666 - job_portal - INFO - Scheduler: No files found in resumes folder.
+2025-04-13 14:36:07,662 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:36:07,663 - job_portal - INFO - Scheduler: No files found in resumes folder.
+2025-04-13 14:37:07,662 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:37:07,662 - job_portal - INFO - Scheduler: No files found in resumes folder.
+2025-04-13 14:37:24,343 - job_portal - INFO - Scheduler: GCS Upload Feature ENABLED for bucket 'job_portal_app'
+2025-04-13 14:37:46,706 - job_portal - INFO - Home page accessed
+2025-04-13 14:37:48,652 - job_portal - INFO - User 1 accessing their job applications
+2025-04-13 14:37:48,654 - job_portal - INFO - Found 6 applications for user 1
+2025-04-13 14:37:50,550 - job_portal - INFO - Resume access request for file: 1/My_New_Resume.pdf by user 1 with role job_seeker
+2025-04-13 14:37:50,553 - job_portal - INFO - Job seeker 1 accessed their own resume for application 2
+2025-04-13 14:37:53,497 - job_portal - INFO - Resume file 1/My_New_Resume.pdf successfully served
+2025-04-13 14:38:24,346 - job_portal - INFO - Scheduler: Checking resumes folder...
+2025-04-13 14:38:24,347 - job_portal - INFO - Scheduler: Found 1 files. Uploading to GCS bucket 'job_portal_app'...
+2025-04-13 14:38:26,988 - job_portal - INFO - Scheduler: Uploaded static/resumes/1/My_New_Resume.pdf to GCS
+2025-04-13 14:38:27,322 - job_portal - INFO - Scheduler: Deleted local file static/resumes/1/My_New_Resume.pdf
+2025-04-13 14:38:27,323 - job_portal - INFO - Scheduler: Removed empty directory static/resumes/1
+2025-04-13 14:38:27,323 - job_portal - INFO - Scheduler: Removed empty directory static/resumes
+2025-04-13 14:38:27,323 - job_portal - INFO - Scheduler: Upload to GCS and local cleanup complete.

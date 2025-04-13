@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h3 class="mb-0">Post a New Job</h3>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form method="POST" enctype="multipart/form-data" action="{{ url_for('employer.new_job') }}">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-3">
+                            {{ form.title.label(class="form-label") }}
+                            {{ form.title(class="form-control") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.company.label(class="form-label") }}
+                            {{ form.company(class="form-control") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.company_logo.label(class="form-label") }}
+                            <small class="text-muted d-block mb-2">(Optional: jpg, png, jpeg)</small>
+                            {{ form.company_logo(class="form-control") }}
+                            {% if form.company_logo.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.company_logo.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.description.label(class="form-label") }}
+                            {{ form.description(class="form-control", rows="5") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.salary.label(class="form-label") }}
+                            {{ form.salary(class="form-control") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.location.label(class="form-label") }}
+                            {{ form.location(class="form-control") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.category.label(class="form-label") }}
+                            {{ form.category(class="form-control") }}
+                        </div>
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-primary btn-lg") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

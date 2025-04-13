@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block hero %}
+<!-- Header Start -->
+<div class="container-xxl py-5 bg-dark page-header mb-5">
+    <div class="container my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">My Jobs</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">My Jobs</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if jobs %}
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-lg-12 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img class="img-fluid rounded" src="{{ url_for('static', filename=job.company_logo) }}"
+                                alt="{{ job.company }} logo" style="max-height: 80px;">
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="card-title mb-1">{{ job.title }}</h5>
+                            <p class="card-text mb-1">
+                                <i class="fa fa-building text-primary me-2"></i>{{ job.company }}
+                            </p>
+                            <p class="card-text mb-1">
+                                <i class="fa fa-map-marker-alt text-primary me-2"></i>{{ job.location }}
+                            </p>
+                            <small class="text-muted">
+                                <i class="far fa-calendar-alt text-primary me-2"></i>
+                                Posted on {{ job.posted_date.strftime('%Y-%m-%d') }}
+                            </small>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <a href="{{ url_for('employer.job_applications', job_id=job.id) }}" class="btn btn-primary mb-2">
+                                <i class="fa fa-users me-2"></i>
+                                View Applications ({{ job.application_count }})
+                            </a>
+                            <form method="POST" action="{{ url_for('employer.delete_job', job_id=job.id) }}"
+                                class="d-inline-block">
+                                {{ form.hidden_tag() }}
+                                <button type="submit" class="btn btn-danger mb-2"
+                                    onclick="return confirm('Are you sure you want to delete this job? This will also delete all applications.')">
+                                    <i class="fa fa-trash me-2"></i>Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <h4 class="mb-4">You have not posted any jobs yet.</h4>
+        <a href="{{ url_for('employer.new_job') }}" class="btn btn-primary">
+            <i class="fa fa-plus me-2"></i>Post a New Job
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid bg-primary py-3 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="text-center text-white mb-2">Job Listings</h1>
+    </div>
+</div>
+
+<div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+    <form method="GET" class="mb-0">
+        <div class="row g-2 px-4">
+            <div class="col-md-10">
+                <div class="row g-2">
+                    <div class="col-md-4">
+                        <input type="text" name="company" class="form-control border-0" placeholder="Company Name"
+                            value="{{ request.args.get('company', '') }}">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="category" class="form-control border-0" placeholder="Category"
+                            value="{{ request.args.get('category', '') }}">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="location" class="form-control border-0" placeholder="Location"
+                            value="{{ request.args.get('location', '') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-dark border-0 w-100">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    {% if jobs %}
+    {% for job in jobs %}
+    <div class="job-item p-4 mb-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                <img class="flex-shrink-0 img-fluid border rounded"
+                    src="{{ url_for('static', filename=job.company_logo) }}" alt="{{ job.company }} logo"
+                    style="width: 80px; height: 80px; object-fit: cover;">
+                <div class="text-start ps-4">
+                    <h5 class="mb-3"><a href="{{ url_for('jobs.job_detail', job_id=job.id) }}" class="text-dark">{{ job.title
+                            }}</a></h5>
+                    <span class="text-truncate me-3"><i class="fa fa-building text-primary me-2"></i>{{ job.company
+                        }}</span>
+                    <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{
+                        job.location }}</span>
+                    <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{
+                        job.salary or 'Not specified' }}</span>
+                </div>
+            </div>
+            <div
+                class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                <div class="d-flex mb-3">
+                    <a class="btn btn-primary" href="{{ url_for('jobs.job_detail', job_id=job.id) }}">View Details</a>
+                </div>
+                <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Posted: {{
+                    job.posted_date.strftime('%Y-%m-%d') }}</small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="text-center">
+        <p>No jobs found matching your criteria.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<!-- Libraries Stylesheet -->
+<link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+{% endblock %}

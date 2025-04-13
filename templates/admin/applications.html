@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>Application Management</h1>
+        <p>View all job applications in the system.</p>
+        <a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary mb-3">Back to Dashboard</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Job Title</th>
+                    <th>Applicant</th>
+                    <th>Application Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ application.id }}</td>
+                    <td>{{ application.job.title }}</td>
+                    <td>{{ application.applicant.username }}</td>
+                    <td>{{ application.application_date.strftime('%Y-%m-%d') }}</td>
+                    <td>
+                        <span class="badge bg-{{ 'success' if application.status == 'hired' 
+                                                else 'danger' if application.status == 'rejected'
+                                                else 'primary' }}">
+                            {{ application.status|title }}
+                        </span>
+                        <!-- Status Update Form -->
+                        <form action="{{ url_for('admin.admin_update_application', application_id=application.id) }}" 
+                              method="POST" 
+                              class="d-inline mt-2">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <div class="input-group input-group-sm">
+                                <select name="status" class="form-select form-select-sm">
+                                    <option value="pending" {% if application.status == 'pending' %}selected{% endif %}>Pending</option>
+                                    <option value="reviewed" {% if application.status == 'reviewed' %}selected{% endif %}>Reviewed</option>
+                                    <option value="rejected" {% if application.status == 'rejected' %}selected{% endif %}>Rejected</option>
+                                    <option value="shortlisted" {% if application.status == 'shortlisted' %}selected{% endif %}>Shortlisted</option>
+                                    <option value="hired" {% if application.status == 'hired' %}selected{% endif %}>Hired</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fa fa-save"></i> Update
+                                </button>
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('jobs.job_detail', job_id=application.job.id) }}"
+                            class="btn btn-sm btn-info">View Job</a>
+                        {% if application.resume_path %}
+                        {% set filename = application.resume_path.replace('static/resumes/', '') %}
+                        <a href="{{ url_for('utils.serve_resume', filename=filename) }}" class="btn btn-sm btn-primary"
+                            target="_blank">View Resume</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

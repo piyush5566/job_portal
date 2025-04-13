@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4">User Profile</h1>
+
+                        <div class="text-center mb-4">
+                            {% if current_user and current_user.profile_picture %}
+                                <img src="{{ url_for('static', filename=current_user.profile_picture) }}" alt="Profile Picture"
+                                    class="img-thumbnail rounded-circle"
+                                    style="width: 150px; height: 150px; object-fit: cover;">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='img/profiles/default.jpg') }}" alt="Profile Picture"
+                                    class="img-thumbnail rounded-circle"
+                                    style="width: 150px; height: 150px; object-fit: cover;">
+                            {% endif %}
+                        </div>
+
+                        <form method="POST" enctype="multipart/form-data" action="{{ url_for('auth.profile') }}">
+                            {{ form.hidden_tag() }}
+
+                            <div class="mb-3">
+                                {{ form.username.label(class="form-label") }}
+                                {{ form.username(class="form-control") }}
+                                {% for error in form.username.errors %}
+                                <span class="text-danger">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.email.label(class="form-label") }}
+                                {{ form.email(class="form-control") }}
+                                {% for error in form.email.errors %}
+                                <span class="text-danger">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.profile_picture.label(class="form-label") }}
+                                <small class="text-muted">(Optional: jpg, png, jpeg)</small>
+                                {{ form.profile_picture(class="form-control") }}
+                                {% for error in form.profile_picture.errors %}
+                                <span class="text-danger">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                {{ form.submit(class="btn btn-primary") }}
+                            </div>
+                        </form>
+
+                        <hr>
+                        <p class="text-center text-muted">Role: {{ current_user.role.replace('_', ' ').title() }}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

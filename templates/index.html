@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% block hero %}
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+    <div class="owl-carousel header-carousel position-relative">
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/carousel-1.jpg') }}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                style="background: rgba(43, 57, 64, .5);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-3 text-white animated slideInDown mb-4">Find The Perfect Job That You
+                                Deserved</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">Discover thousands of job opportunities
+                                across multiple industries. Your dream career awaits with competitive salaries and
+                                benefits from top employers.</p>
+                            <a href="{{ url_for('jobs.jobs_list') }}"
+                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search A Job</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/carousel-2.jpg') }}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                style="background: rgba(43, 57, 64, .5);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-3 text-white animated slideInDown mb-4">Find The Best Job That Fit You
+                            </h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">Whether you're starting your career or
+                                looking for your next opportunity, we connect skilled professionals with companies that
+                                value talent and innovation.</p>
+                            <a href="{{ url_for('jobs.jobs_list') }}"
+                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search A Job</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->
+{% endblock %}
+
+{% block content %}
+<!-- Search Start -->
+<div class="container-fluid bg-primary wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+    <form id="searchForm" onsubmit="handleSearch(event)">
+        <div class="row g-2 px-4">
+            <div class="col-md-10">
+                <div class="row g-2">
+                    <div class="col-md-4">
+                        <input type="text" name="company" id="company" class="form-control border-0"
+                            placeholder="Company Name" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="category" id="category" class="form-control border-0"
+                            placeholder="Category" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="location" id="location" class="form-control border-0"
+                            placeholder="Location" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-dark border-0 w-100">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Search Results Section -->
+<div class="container-xxl py-5" id="searchResults" style="display: none;">
+    <div class="container">
+        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Search Results</h1>
+        <div id="resultsContainer" class="wow fadeInUp" data-wow-delay="0.3s">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+    </div>
+</div>
+<!-- Search End -->
+
+<!-- Category Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
+        <div class="row g-4">
+            {% for category, count in job_categories %}
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.{{ loop.index0 * 2 }}s">
+                <a class="cat-item rounded p-4" href="{{ url_for('jobs.jobs_list', category=category) }}">
+                    <i class="fa fa-3x fa-{{ 'chart-line' if category == 'Marketing' 
+                                        else 'laptop-code' if category == 'Information Technology' 
+                                        else 'user-tie' if category == 'Human Resource' 
+                                        else 'tasks' if category == 'Project Management' 
+                                        else 'hands-helping' if category == 'Sales & Communication' 
+                                        else 'book-reader' if category == 'Teaching & Education' 
+                                        else 'drafting-compass' if category == 'Design & Creative' 
+                                        else 'cogs' }} text-primary mb-4"></i>
+                    <h6 class="mb-3">{{ category }}</h6>
+                    <p class="mb-0">{{ count }} {{ 'Vacancy' if count == 1 else 'Vacancies' }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Category End -->
+
+<!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="row g-0 about-bg rounded overflow-hidden">
+                    <div class="col-6 text-start">
+                        <img class="img-fluid w-100" src="{{ url_for('static', filename='img/about-1.jpg') }}">
+                    </div>
+                    <div class="col-6 text-start">
+                        <img class="img-fluid" src="{{ url_for('static', filename='img/about-2.jpg') }}"
+                            style="width: 85%; margin-top: 15%;">
+                    </div>
+                    <div class="col-6 text-end">
+                        <img class="img-fluid" src="{{ url_for('static', filename='img/about-3.jpg') }}"
+                            style="width: 85%;">
+                    </div>
+                    <div class="col-6 text-end">
+                        <img class="img-fluid w-100" src="{{ url_for('static', filename='img/about-4.jpg') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="mb-4">We Help To Get The Best Job And Find A Talent</h1>
+                <p class="mb-4">At StartWorking, we're dedicated to connecting talented professionals with their dream
+                    jobs and helping employers find the perfect candidates to drive their business forward.</p>
+                <p><i class="fa fa-check text-primary me-3"></i>Thousands of verified job listings</p>
+                <p><i class="fa fa-check text-primary me-3"></i>Smart job matching technology</p>
+                <p><i class="fa fa-check text-primary me-3"></i>Direct communication with employers</p>
+                <p><i class="fa fa-check text-primary me-3"></i>Career guidance and resources</p>
+                <a class="btn btn-primary py-3 px-5 mt-3" href="{{ url_for('main.about') }}">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Jobs Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Featured Jobs</h1>
+        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    {% for job in featured_jobs %}
+                    <div class="job-item p-4 mb-4">
+                        <div class="row g-4">
+                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                <img class="flex-shrink-0 img-fluid border rounded"
+                                    src="{{ url_for('static', filename=job.company_logo) }}" alt=""
+                                    style="width: 80px; height: 80px;">
+                                <div class="text-start ps-4">
+                                    <h5 class="mb-3">{{ job.title }}</h5>
+                                    <span class="text-truncate me-3"><i
+                                            class="fa fa-map-marker-alt text-primary me-2"></i>{{ job.location }}</span>
+                                    <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full
+                                        Time</span>
+                                    <span class="text-truncate me-0"><i
+                                            class="far fa-money-bill-alt text-primary me-2"></i>{{ job.salary }}</span>
+                                </div>
+                            </div>
+                            <div
+                                class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                <div class="d-flex mb-3">
+                                    <a class="btn btn-light btn-square me-3" href=""><i
+                                            class="far fa-heart text-primary"></i></a>
+                                    <a class="btn btn-primary" href="{{ url_for('jobs.job_detail', job_id=job.id) }}">Apply
+                                        Now</a>
+                                </div>
+                                <small class="text-truncate"><i
+                                        class="far fa-calendar-alt text-primary me-2"></i>Posted: {{
+                                    job.posted_date.strftime('%Y-%m-%d') }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <a class="btn btn-primary py-3 px-5" href="{{ url_for('jobs.jobs_list') }}">Browse More Jobs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jobs End -->
+
+<!-- Testimonial Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="text-center mb-5">Success Stories</h1>
+        <div class="owl-carousel testimonial-carousel">
+            <div class="testimonial-item bg-light rounded p-4">
+                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                <p>Thanks to this platform, I found my dream job in just two weeks! The process was smooth, and the job
+                    matching was spot-on with my skills and experience.</p>
+                <div class="d-flex align-items-center">
+                    <img class="img-fluid flex-shrink-0 rounded"
+                        src="{{ url_for('static', filename='img/testimonial-1.jpg') }}"
+                        style="width: 50px; height: 50px;">
+                    <div class="ps-3">
+                        <h5 class="mb-1">Sarah Johnson</h5>
+                        <small>Software Developer</small>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-4">
+                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                <p>As an employer, this platform has helped us find exceptional talent quickly. The quality of
+                    candidates and the user-friendly interface make recruitment a breeze.</p>
+                <div class="d-flex align-items-center">
+                    <img class="img-fluid flex-shrink-0 rounded"
+                        src="{{ url_for('static', filename='img/testimonial-2.jpg') }}"
+                        style="width: 50px; height: 50px;">
+                    <div class="ps-3">
+                        <h5 class="mb-1">Michael Chen</h5>
+                        <small>HR Director</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+<!-- Add required CSS and JS links to base.html or include them here -->
+{% endblock %}
+
+{% block extra_css %}
+<!-- Icon Font Stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block extra_js %}
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+<!-- Custom Javascript -->
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
