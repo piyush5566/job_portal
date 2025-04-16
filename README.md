@@ -2,6 +2,8 @@
 
 A full-featured job portal web application built with Flask, allowing job seekers to find and apply for jobs, employers to post job listings, and administrators to manage the entire platform.
 
+Live Deployment: https://jobportal-production-fcd5.up.railway.app
+
 ## Features
 
 - **User Management**
