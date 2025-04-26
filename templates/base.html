@@ -32,6 +32,8 @@
 </head>
 
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="visually-hidden-focusable position-absolute top-0 start-0 bg-white text-primary p-2" style="z-index:1000;">Skip to main content</a>
     <div class="container-xxl bg-white p-0">
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
@@ -122,7 +124,7 @@
 
         {% block hero %}{% endblock %}
 
-        <div class="container mt-4">
+        <div id="main-content" class="container mt-4">
             {% block content %}{% endblock %}
         </div>
 
