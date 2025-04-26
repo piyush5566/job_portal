@@ -33,7 +33,8 @@ class Config:
     ENABLE_GCS_UPLOAD = os.environ.get('ENABLE_GCS_UPLOAD', 'False').lower() == 'true'
     
     # Security
-    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
     # REMEMBER_COOKIE_SECURE = True
     
 class DevelopmentConfig(Config):

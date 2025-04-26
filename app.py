@@ -21,7 +21,7 @@ Usage:
 
 from flask import Flask, session, redirect, url_for
 from models import User
-from config import Config
+from config import config
 from extensions import db, init_app
 from appsched import init_scheduler
 import os
@@ -32,7 +32,7 @@ from flask_talisman import Talisman
 application = None
 
 
-def create_app(config_class=Config):
+def create_app(config_class=config[os.getenv('APP_ENV', 'development')]):
     """Create and configure the Flask application instance.
     
     Args:
@@ -49,6 +49,7 @@ def create_app(config_class=Config):
         - Initializes scheduler (once)
         - Creates database tables
     """
+    print(f"APP_ENV: {os.getenv('APP_ENV', 'development')}")
     global application
     
     app = Flask(__name__)
