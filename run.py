@@ -1,5 +1,5 @@
 import os
-from app_factory import create_app
+from app import create_app
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
