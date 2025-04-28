@@ -51,7 +51,7 @@
                             </a>
                             {% if application.resume_path %}
                             {% set filename = application.resume_path.replace('static/resumes/', '') %}
-                            <a href="{{ url_for('utils.serve_resume', filename=filename) }}" class="btn btn-primary mb-2"
+                            <a href="{{ url_for('utils.serve_resume', cs_suffix=filename) }}" class="btn btn-primary mb-2"
                                 target="_blank">
                                 <i class="fa fa-file-pdf me-2"></i>View Resume
                             </a>

@@ -16,6 +16,8 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 import logging
 from flask import current_app
+from google.cloud import storage
+import io # Needed for BytesIO in serve_resume later
 
 # Configuration constants
 UPLOAD_FOLDER = 'static/resumes'
@@ -44,39 +46,85 @@ def allowed_file(filename, allowed_extensions):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in allowed_extensions
 
-def save_resume(resume_file, user_id):
+# --- NEW: Function to upload directly to GCS ---
+def upload_to_gcs(file_storage, user_id, gcs_bucket_name):
     """
-    Save a resume file to the appropriate directory.
-    
-    Creates a user-specific directory if it doesn't exist and
-    saves the resume file with a secure filename.
-    
+    Uploads a file directly to Google Cloud Storage.
+
     Args:
-        resume_file (FileStorage): The resume file to save
-        user_id (int): The ID of the user uploading the resume
-        
+        file_storage (FileStorage): The file object from the request.
+        user_id (int): The ID of the user uploading the file.
+        gcs_bucket_name (str): The name of the target GCS bucket.
+
     Returns:
-        str: The relative path to the saved resume file
-        
-    Raises:
-        Exception: If there's an error saving the file
+        str: The GCS object name (e.g., 'resumes/123/filename.pdf') if successful,
+             None otherwise.
     """
+    if not file_storage or not gcs_bucket_name:
+        logger.warning("upload_to_gcs: Missing file_storage or bucket name.")
+        return None
+
+    if not allowed_file(file_storage.filename, ALLOWED_RESUME_EXTENSIONS):
+        logger.warning(f"upload_to_gcs: Invalid file type attempted: {file_storage.filename}")
+        return None
+
     try:
-        if resume_file and allowed_file(resume_file.filename, ALLOWED_RESUME_EXTENSIONS):
-            filename = secure_filename(resume_file.filename)
-            # Create user-specific directory
-            user_dir = os.path.join(UPLOAD_FOLDER, str(user_id))
-            if not os.path.exists(user_dir):
-                os.makedirs(user_dir)
-                logger.info(f"Created resume directory for user {user_id}")
-            
-            filepath = os.path.join(user_dir, filename)
-            resume_file.save(filepath)
-            logger.info(f"Resume saved successfully: {filepath}")
-            return f"static/resumes/{user_id}/{filename}"
+        filename = secure_filename(file_storage.filename)
+        # Construct the object name/path within GCS
+        gcs_object_name = f"resumes/{user_id}/{filename}"
+
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(gcs_bucket_name)
+        blob = bucket.blob(gcs_object_name)
+
+        # Rewind the file stream before uploading
+        file_storage.seek(0)
+
+        # Upload the file stream
+        blob.upload_from_file(file_storage)
+
+        logger.info(f"Successfully uploaded {filename} to GCS bucket {gcs_bucket_name} as {gcs_object_name} for user {user_id}")
+        return gcs_object_name # Return the GCS path
+
     except Exception as e:
-        logger.error(f"Error saving resume for user {user_id}: {str(e)}")
-        raise
+        logger.error(f"Error uploading {file_storage.filename} to GCS for user {user_id}: {str(e)}")
+        # Optionally re-raise or handle specific GCS exceptions
+        return None
+    
+    
+# def save_resume(resume_file, user_id):
+#     """
+#     Save a resume file to the appropriate directory.
+    
+#     Creates a user-specific directory if it doesn't exist and
+#     saves the resume file with a secure filename.
+    
+#     Args:
+#         resume_file (FileStorage): The resume file to save
+#         user_id (int): The ID of the user uploading the resume
+        
+#     Returns:
+#         str: The relative path to the saved resume file
+        
+#     Raises:
+#         Exception: If there's an error saving the file
+#     """
+#     try:
+#         if resume_file and allowed_file(resume_file.filename, ALLOWED_RESUME_EXTENSIONS):
+#             filename = secure_filename(resume_file.filename)
+#             # Create user-specific directory
+#             user_dir = os.path.join(UPLOAD_FOLDER, str(user_id))
+#             if not os.path.exists(user_dir):
+#                 os.makedirs(user_dir)
+#                 logger.info(f"Created resume directory for user {user_id}")
+            
+#             filepath = os.path.join(user_dir, filename)
+#             resume_file.save(filepath)
+#             logger.info(f"Resume saved successfully: {filepath}")
+#             return f"static/resumes/{user_id}/{filename}"
+#     except Exception as e:
+#         logger.error(f"Error saving resume for user {user_id}: {str(e)}")
+#         raise
 
 def save_company_logo(file):
     """
@@ -121,6 +169,9 @@ def save_profile_picture(picture_file):
         str: The relative path to the saved profile picture,
              or the default profile picture path if saving failed
     """
+    if not picture_file or not allowed_file(picture_file.filename, ALLOWED_PIC_EXTENSIONS):
+         logger.warning(f"Invalid profile picture file type attempted or file missing.")
+         return 'img/profiles/default.jpg' # Return default if invalid
     try:
         filename = secure_filename(picture_file.filename)
         unique_filename = str(uuid.uuid4().hex[:16]) + os.path.splitext(filename)[1]

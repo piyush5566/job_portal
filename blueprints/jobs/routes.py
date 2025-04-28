@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session, jsonify, current_app
 from models import db, Job, Application
-from utils import logger, save_resume
+from utils import logger, upload_to_gcs, allowed_file
 from blueprints.auth.routes import login_required, role_required
 from forms import ApplicationForm
 
@@ -148,29 +148,67 @@ def apply_job(job_id):
         return redirect(url_for('jobs.job_detail', job_id=job_id))
 
     if form.validate_on_submit():
+        resume_path_for_db = None # Will store GCS object name or None
+        gcs_upload_successful = True # Assume success if no file or GCS disabled
         try:
-            # Save resume file
-            if form.resume.data:
-                resume_path = save_resume(form.resume.data, session['user_id'])
-                logger.info(f"Resume saved for application to job {job_id} by user {session['user_id']}")
-            else:
-                resume_path = None
+            # --- Handle Resume Upload ---
+            resume_file = form.resume.data
+            if resume_file:
+                # Check config if GCS should be used
+                enable_gcs = current_app.config.get('ENABLE_GCS_UPLOAD', False)
+                gcs_bucket_name = current_app.config.get('GCS_BUCKET_NAME')
 
-            # Create application
-            application = Application(
-                job_id=job_id,
-                applicant_id=session['user_id'],
-                resume_path=resume_path,
-                status='pending'
-            )
-            db.session.add(application)
-            db.session.commit()
-            logger.info(f"User {session['user_id']} successfully applied to job {job_id}")
-            flash('Your application has been submitted!', 'success')
-            return redirect(url_for('job_seeker.my_applications'))
+                if enable_gcs and gcs_bucket_name:
+                    logger.info(f"Attempting GCS upload for application to job {job_id} by user {session['user_id']}")
+                    # Attempt direct upload to GCS
+                    gcs_object_name = upload_to_gcs(
+                        file_storage=resume_file,
+                        user_id=session['user_id'],
+                        gcs_bucket_name=gcs_bucket_name
+                    )
+
+                    if gcs_object_name:
+                        resume_path_for_db = gcs_object_name.removeprefix('resumes/') # Store GCS path
+                        logger.info(f"GCS upload successful for job {job_id}, user {session['user_id']}. Path: {resume_path_for_db}")
+                    else:
+                        # GCS upload failed
+                        gcs_upload_successful = False
+                        logger.error(f"GCS upload failed for job {job_id}, user {session['user_id']}")
+                        flash('There was an error uploading your resume to cloud storage. Please try again.', 'danger')
+                        # Optionally, save locally as a fallback ONLY IF GCS fails?
+                        # Or just fail the application? Let's fail for now.
+                        # return render_template('apply_job.html', form=form, job=job) # Stay on page
+                else:
+                    # GCS not enabled, handle locally (or disallow?)
+                    # For now, let's log a warning and not save the resume if GCS isn't enabled
+                    logger.warning(f"Resume provided for job {job_id}, user {session['user_id']}, but GCS upload is disabled or bucket not configured. Resume not saved.")
+                    # Optionally flash a message to the user
+                    # flash('Resume upload is currently disabled.', 'info')
+                    # resume_path_for_db = None # Explicitly set to None
+
+            # --- Create Application Record (only if GCS upload was successful or no resume) ---
+            if gcs_upload_successful:
+                application = Application(
+                    job_id=job_id,
+                    applicant_id=session['user_id'],
+                    resume_path=resume_path_for_db, # Store GCS path or None
+                    status='applied' # Changed from 'pending' to 'applied'
+                )
+                db.session.add(application)
+                db.session.commit()
+                logger.info(f"User {session['user_id']} successfully applied to job {job_id}. Resume path (GCS): {resume_path_for_db}")
+                flash('Your application has been submitted!', 'success')
+                return redirect(url_for('job_seeker.my_applications'))
+            # else: GCS upload failed, already flashed message, stay on page
+
         except Exception as e:
             db.session.rollback()
-            logger.error(f"Error applying to job {job_id}: {str(e)}")
-            flash('An error occurred while submitting your application.', 'danger')
-
+            logger.error(f"Error processing application for job {job_id}, user {session['user_id']}: {str(e)}")
+            flash('An unexpected error occurred while submitting your application.', 'danger')
+            
+    elif request.method == 'POST':
+        # Log validation errors if POST request failed validation
+        logger.warning(f"Application form validation failed for job {job_id}, user {session['user_id']}: {form.errors}")
+        flash('Please correct the errors in the form.', 'warning')
+        
     return render_template('apply_job.html', form=form, job=job)

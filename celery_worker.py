@@ -34,16 +34,16 @@ def make_celery(app):
 
     beat_schedule = {}
     # Only schedule the job if GCS is enabled and configured
-    if enable_gcs and gcs_bucket_name and gcs_bucket_name != 'your-gcs-bucket-name':
-        print(f"Celery Beat: Scheduling 'upload_resumes_to_gcs_task' every {interval_minutes} minutes.")
-        beat_schedule['upload-resumes-every-interval'] = {
-            'task': 'tasks.upload_resumes_to_gcs_task', # Path to the task function
-            'schedule': interval_minutes * 60.0, # Schedule in seconds (or use crontab)
-            # 'schedule': crontab(minute=f'*/{interval_minutes}'), # Alternative using crontab
-            'args': (upload_folder, gcs_bucket_name), # Arguments for the task
-        }
-    else:
-         print("Celery Beat: GCS upload not enabled or bucket not configured. Task 'upload_resumes_to_gcs_task' not scheduled.")
+    # if enable_gcs and gcs_bucket_name and gcs_bucket_name != 'your-gcs-bucket-name':
+    #     print(f"Celery Beat: Scheduling 'upload_resumes_to_gcs_task' every {interval_minutes} minutes.")
+    #     beat_schedule['upload-resumes-every-interval'] = {
+    #         'task': 'tasks.upload_resumes_to_gcs_task', # Path to the task function
+    #         'schedule': interval_minutes * 60.0, # Schedule in seconds (or use crontab)
+    #         # 'schedule': crontab(minute=f'*/{interval_minutes}'), # Alternative using crontab
+    #         'args': (upload_folder, gcs_bucket_name), # Arguments for the task
+    #     }
+    # else:
+    #      print("Celery Beat: GCS upload not enabled or bucket not configured. Task 'upload_resumes_to_gcs_task' not scheduled.")
 
     celery.conf.beat_schedule = beat_schedule
     # --------------------------
