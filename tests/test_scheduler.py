@@ -17,7 +17,7 @@ def app():
     yield app
 
 def test_scheduler_runs():
-    app = create_app(config['development'])
+    app = create_app(config['dev_testing'])
     with patch('appsched.upload_resumes_to_gcs') as mock_upload:
         # Simulate scheduler job
         mock_upload()

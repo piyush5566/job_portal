@@ -4,7 +4,7 @@ from config import config
 
 @pytest.fixture
 def client():
-    app = create_app(config['development'])
+    app = create_app(config['dev_testing'])
     app.config['TESTING'] = True
     with app.test_client() as client:
         with app.app_context():

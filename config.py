@@ -47,9 +47,23 @@ class ProductionConfig(Config):
     DEBUG = False
     SESSION_COOKIE_SECURE = True
     PREFERRED_URL_SCHEME = 'https'
+    
+class DevTestConfig(DevelopmentConfig):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    SECRET_KEY = 'test'
+    WTF_CSRF_ENABLED = False
+    
+class ProdTestConfig(ProductionConfig):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    SECRET_KEY = 'test'
+    WTF_CSRF_ENABLED = False
 
 config = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
-    'default': DevelopmentConfig
+    'default': DevelopmentConfig,
+    'dev_testing': DevTestConfig,
+    'prod_testing': ProdTestConfig,
 }

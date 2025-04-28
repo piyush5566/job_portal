@@ -1,14 +1,14 @@
 import pytest
 from app import create_app
-from config import config
 from extensions import db
+from config import config
 from models import User, Job, Application
+
+
 
 @pytest.fixture
 def app():
-    app = create_app(config['development'])
-    app.config['TESTING'] = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    app = create_app(config['dev_testing'])
     with app.app_context():
         db.create_all()
         yield app

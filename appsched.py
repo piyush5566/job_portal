@@ -159,5 +159,5 @@ def init_scheduler(app, gcs_bucket_name):
                           trigger="interval", minutes=15)
         scheduler.start()
         # Shutdown scheduler gracefully when the app exits
-        atexit.register(lambda: scheduler.shutdown())
+        atexit.register(lambda: scheduler.shutdown() if scheduler is not None else None)
         atexit.register(lambda: os.close(lock_fd))

@@ -10,8 +10,9 @@ from models import User
 
 @pytest.fixture
 def client():
-    app = create_app(config['development'])
+    app = create_app(config['dev_testing'])
     app.config['TESTING'] = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
     app.config['WTF_CSRF_ENABLED'] = False
     with app.test_client() as client:
         with app.app_context():

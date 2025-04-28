@@ -8,5 +8,4 @@ __pycache__/
 .env
 static/resumes
 logs
-instance/jobportal.db
 jobportal.db
