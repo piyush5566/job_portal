@@ -23,7 +23,7 @@ from flask import Flask, session, redirect, url_for
 from models import User
 from config import config
 from extensions import db, init_app
-from appsched import init_scheduler
+# from tasks import init_scheduler
 import os
 from logging_config import setup_logger
 from flask_talisman import Talisman
@@ -100,11 +100,7 @@ def create_app(config_class=config[os.getenv('APP_ENV', 'development')]):
     # Register blueprints
     register_blueprints(app)
 
-    # Initialize scheduler only if not already initialized
-    # Prevents multiple scheduler instances in Gunicorn workers
-    if os.environ.get('WERKZEUG_RUN_MAIN') != 'true' and not app.config.get('SCHEDULER_INITIALIZED', False):
-        init_scheduler(app)
-        app.config['SCHEDULER_INITIALIZED'] = True
+    
         
     # Context processor to make current user available in templates
     @app.context_processor

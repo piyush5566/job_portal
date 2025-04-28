@@ -31,17 +31,18 @@ class User(db.Model):
         jobs_posted (relationship): Jobs posted by this user (for employers)
         applications (relationship): Job applications submitted by this user (for job seekers)
     """
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    username = db.Column(db.String(80), nullable=False, index=True)
+    email = db.Column(db.String(120), unique=True, nullable=False, index=True)
     password = db.Column(db.String(120), nullable=False)
-    role = db.Column(db.String(20), nullable=False)
+    role = db.Column(db.String(20), nullable=False, index=True)
     profile_picture = db.Column(
         db.String(200), nullable=True, default='img/profiles/default.jpg')
 
-    jobs_posted = db.relationship('Job', backref='poster', lazy=True)
+    jobs_posted = db.relationship('Job', backref='poster', lazy=True, cascade="all, delete-orphan")
     applications = db.relationship(
-        'Application', backref='applicant', lazy=True)
+        'Application', backref='applicant', lazy=True, cascade="all, delete-orphan")
 
     def set_password(self, password):
         """
@@ -66,7 +67,7 @@ class User(db.Model):
 
     def __repr__(self):
         """String representation of the User object."""
-        return f'<User {self.username}>'
+        return f'<User {self.username} ({self.role})>'
 
 
 class Job(db.Model):
@@ -86,26 +87,32 @@ class Job(db.Model):
         poster_id (int): Foreign key to the employer who posted the job
         applications (relationship): Applications submitted for this job
     """
+    __tablename__ = 'job'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
     salary = db.Column(db.String(50))
-    location = db.Column(db.String(100), nullable=False)
-    category = db.Column(db.String(50), nullable=False)
-    company = db.Column(db.String(100), nullable=False)
+    location = db.Column(db.String(100), nullable=False, index=True)
+    category = db.Column(db.String(50), nullable=False, index=True)
+    company = db.Column(db.String(100), nullable=False, index=True)
     company_logo = db.Column(
         db.String(200), nullable=True, default='img/company_logos/default.png')
-    posted_date = db.Column(db.DateTime, default=datetime.now(timezone.utc))
-    poster_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    posted_date = db.Column(db.DateTime, default=datetime.now(timezone.utc), index=True)
+    poster_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, index=True)
 
-    applications = db.relationship('Application', backref='job', lazy=True)
+    applications = db.relationship('Application', backref='job', lazy=True, cascade="all, delete-orphan")
 
     __table_args__ = (UniqueConstraint('title', 'company', 'poster_id', 'location',
                                        name='uq_job_title_company_poster_location'),)
 
+    # Property to easily get application count (consider if this causes N+1 issues later)
+    @property
+    def application_count(self):
+        return len(self.applications)
+    
     def __repr__(self):
         """String representation of the Job object."""
-        return f'<Job {self.title}>'
+        return f'<Job {self.title} at {self.company}>'
 
 
 class Application(db.Model):
@@ -121,15 +128,19 @@ class Application(db.Model):
                      (applied, pending, reviewed, rejected, shortlisted, hired)
         resume_path (str): Path to the uploaded resume file
     """
+    __tablename__ = 'application'
     id = db.Column(db.Integer, primary_key=True)
-    job_id = db.Column(db.Integer, db.ForeignKey('job.id'), nullable=False)
+    job_id = db.Column(db.Integer, db.ForeignKey('job.id'), nullable=False, index=True)
     applicant_id = db.Column(
-        db.Integer, db.ForeignKey('user.id'), nullable=False)
+        db.Integer, db.ForeignKey('user.id'), nullable=False, index=True)
     application_date = db.Column(
-        db.DateTime, default=datetime.now(timezone.utc))
-    status = db.Column(db.String(20), default='applied')
+        db.DateTime, default=datetime.now(timezone.utc), index=True)
+    status = db.Column(db.String(20), default='applied', index=True)
     resume_path = db.Column(db.String(200), nullable=True)
 
+    # Add unique constraint to prevent duplicate applications
+    __table_args__ = (db.UniqueConstraint('job_id', 'applicant_id', name='_job_applicant_uc'),)
+    
     def __repr__(self):
         """String representation of the Application object."""
         return f'<Application {self.id}>'
