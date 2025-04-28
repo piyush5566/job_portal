@@ -11,12 +11,13 @@ def client():
         with app.app_context():
             yield client
 
-@patch('flask_mail.Mail.send')
+@patch('extensions.mail.send')
 def test_contact_form_sends_email(mock_send, client):
     response = client.post('/contact', data={
         'name': 'Test User',
         'email': 'test@example.com',
-        'message': 'Hello!'
+        'subject': 'Test Subject',
+        'message': 'Hello! How are you? What is your name?'
     }, follow_redirects=True)
     assert mock_send.called
     assert b'Thank you' in response.data or response.status_code == 200

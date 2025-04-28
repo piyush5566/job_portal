@@ -103,7 +103,7 @@ def create_app(config_class=config[os.getenv('APP_ENV', 'development')]):
     # Initialize scheduler only if not already initialized
     # Prevents multiple scheduler instances in Gunicorn workers
     if os.environ.get('WERKZEUG_RUN_MAIN') != 'true' and not app.config.get('SCHEDULER_INITIALIZED', False):
-        init_scheduler(app, app.config['GCS_BUCKET_NAME'])
+        init_scheduler(app)
         app.config['SCHEDULER_INITIALIZED'] = True
         
     # Context processor to make current user available in templates

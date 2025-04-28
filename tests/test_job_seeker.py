@@ -11,5 +11,5 @@ def client():
             yield client
 
 def test_my_applications_requires_login(client):
-    response = client.get('/job_seeker/my_applications', follow_redirects=True)
+    response = client.get('/my_applications', follow_redirects=True)
     assert b'Login' in response.data or response.status_code == 403

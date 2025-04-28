@@ -157,20 +157,17 @@ def test_profile_duplicate_email(client):
     }, follow_redirects=True)
     assert b'already registered' in resp.data or resp.status_code == 200
 
-def test_profile_invalid_picture(client, monkeypatch):
+def test_profile_invalid_picture(client):
+    from io import BytesIO
     user = User(username='picuser', email='picuser@example.com', password='hash', role='job_seeker')
     db.session.add(user)
     db.session.commit()
     with client.session_transaction() as sess:
         sess['user_id'] = user.id
-    class DummyFile:
-        class data:
-            filename = 'bad.exe'
-            
-    form_data = {
+    data = {
         'username': 'picuser',
         'email': 'picuser@example.com',
-        'profile_picture': DummyFile()
+        'profile_picture': (BytesIO(b'my file contents'), 'bad.exe')
     }
-    resp = client.post('/profile', data=form_data, follow_redirects=True)
+    resp = client.post('/profile', data=data, content_type='multipart/form-data', follow_redirects=True)
     assert b'Invalid profile picture file type' in resp.data or resp.status_code == 200
