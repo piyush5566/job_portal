@@ -44,10 +44,6 @@ class Config:
     SCHEDULER_INTERVAL_MINUTES = int(os.environ.get('SCHEDULER_INTERVAL_MINUTES', 15))
     SCHEDULER_INITIALIZED = False # No longer used by app factory
 
-    # --- Celery Configuration ---
-    broker_url = os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0')
-    result_backend = os.environ.get('CELERY_RESULT_BACKEND', 'redis://localhost:6379/1')
-    # ----------------------------
 
 class DevelopmentConfig(Config):
     DEBUG = True
@@ -74,12 +70,7 @@ class TestingConfig(Config):
     REMEMBER_COOKIE_SECURE = False
     PREFERRED_URL_SCHEME = 'http'
     DEBUG = False # Ensure debug is off even in testing unless needed
-    # Make Celery run tasks synchronously in tests for easier debugging/assertion
-    task_always_eager = True # Use lowercase key
-    task_eager_propagates = True # Use lowercase key
-    # Use different Redis DBs for testing if needed, or mock Celery entirely
-    # CELERY_BROKER_URL = 'redis://localhost:6379/2'
-    # CELERY_RESULT_BACKEND = 'redis://localhost:6379/3'
+
 
 class DevelopmentTestingConfig(TestingConfig):
     # Inherits from TestingConfig, can add specific overrides if needed

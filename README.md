@@ -28,7 +28,6 @@ Live Deployment: https://jobportal-production-fcd5.up.railway.app
   - Contact form
   - Secure file uploads (Local & GCS)
   - Role-based access control
-  - Background task scheduling (APScheduler)
 
 ## Technology Stack
 
@@ -39,7 +38,6 @@ Live Deployment: https://jobportal-production-fcd5.up.railway.app
 - **Security**: Flask-Talisman, CSRF protection
 - **File Storage(Resume)**: Local storage with GCS support
 - **Email**: Flask-Mail
-- **Task Scheduling**: Celery (with Redis broker)
 - **Testing**: Pytest
 
 ## Prerequisites
@@ -47,7 +45,6 @@ Live Deployment: https://jobportal-production-fcd5.up.railway.app
 - Python 3.12+
 - pip (Python package installer)
 - Virtual environment (recommended)
-- Redis Server (for Celery message broker)
 
 ## Installation
 
@@ -91,13 +88,6 @@ Live Deployment: https://jobportal-production-fcd5.up.railway.app
     GCS_BUCKET_NAME=your-gcs-bucket-name # Required if ENABLE_GCS_UPLOAD=True
     ENABLE_GCS_UPLOAD=False # Set to True to enable resume uploads to GCS
     # Ensure GOOGLE_APPLICATION_CREDENTIALS environment variable is set if using GCS
-
-    # Scheduler
-    SCHEDULER_INTERVAL_MINUTES=15 # How often the resume upload job runs
-
-    # Celery Configuration (Defaults use Redis on localhost)
-    # broker_url=redis://localhost:6379/0
-    # result_backend=redis://localhost:6379/1
     ```
     **Note:** Ensure you replace placeholder values with your actual configuration. For production, use environment variables instead of a `.env` file for sensitive data.
 
@@ -118,35 +108,11 @@ Live Deployment: https://jobportal-production-fcd5.up.railway.app
     ```
     The application will typically be available at `http://127.0.0.1:5000`. The Flask development server will auto-reload on code changes.
 
-2. **Run the Celery Worker:**
-   In a *separate* terminal (ensure your virtual environment is active):
-    ```bash
-    celery -A celery_worker.celery worker --loglevel=info
-    ```
-    This process listens for tasks sent via the Redis broker.
-
-3. **Run Celery Beat (for scheduled tasks):**
-   In *another* separate terminal (ensure your virtual environment is active):
-    ```bash
-    celery -A celery_worker.celery beat --loglevel=info
-    ```
-    This process reads the schedule (`beat_schedule` in `celery_worker.py`) and sends tasks to the broker at the configured intervals.
-
-4.  **Production mode (using Gunicorn + Celery):**
+2.  **Production mode (using Gunicorn):**
     Ensure `APP_ENV` is set to `production`.
-    * Run Gunicorn for the web application (as before):
+    * Run Gunicorn for the web application:
         ```bash
         gunicorn --workers 4 --bind 0.0.0.0:5000 --timeout 120 --access-logfile - --error-logfile - "app:create_app()"
-        ```
-    * Run the Celery worker(s) (potentially using a process manager like Supervisor):
-        ```bash
-        # Example command, adjust for production needs
-        celery -A celery_worker.celery worker --loglevel=WARNING -c 4 # -c specifies concurrency
-        ```
-    * Run Celery Beat (only *one* instance should run):
-        ```bash
-        # Example command, adjust for production needs
-        celery -A celery_worker.celery beat --loglevel=WARNING --scheduler django_celery_beat.schedulers:DatabaseScheduler # If using DB scheduler, else default is fine
         ```
     Adjust `--workers` based on your server's CPU cores. The application will be available at `http://<your-server-ip>:5000`.
 
@@ -154,7 +120,7 @@ Live Deployment: https://jobportal-production-fcd5.up.railway.app
 
 The project uses `pytest` for running automated tests. The tests are located in the `tests/` directory.
 
-1.  **Prerequisites:** Ensure you have installed all dependencies from `requirements.txt`, as testing libraries are included there. Make sure your `.env` file or environment variables are configured appropriately for a testing environment (e.g., setting `APP_ENV=dev_testing` or `APP_ENV=prod_testing`, potentially configuring test Redis DBs in `config.py` under `TestingConfig` if not mocking Celery). The `TestingConfig` sets `CELERY_TASK_ALWAYS_EAGER=True` so tasks run synchronously within the test process. The test configuration often overrides some settings (like CSRF protection).
+1.  **Prerequisites:** Ensure you have installed all dependencies from `requirements.txt`, as testing libraries are included there. Make sure your `.env` file or environment variables are configured appropriately for a testing environment (e.g., setting `APP_ENV=dev_testing` or `APP_ENV=prod_testing`). The test configuration often overrides some settings (like CSRF protection).
 
 2.  **Running Tests:** Navigate to the project root directory in your terminal (where `requirements.txt` is located) and run:
     ```bash
@@ -170,7 +136,6 @@ The project uses `pytest` for running automated tests. The tests are located in 
 - `forms.py`: WTForms form definitions for user input and validation.
 - `extensions.py`: Initialization of Flask extensions (like `db`, `mail`, `login_manager`).
 - `config.py`: Configuration classes for different environments (Development, Production, Testing).
-- `appsched.py`: Background scheduler setup and job definitions (e.g., GCS upload).
 - `logging_config.py`: Configuration for application logging.
 - `utils.py`: Utility functions or classes.
 - `requirements.txt`: List of Python package dependencies.

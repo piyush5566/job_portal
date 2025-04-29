@@ -23,7 +23,6 @@ from flask import Flask, session, redirect, url_for
 from models import User
 from config import config
 from extensions import db, init_app
-# from tasks import init_scheduler
 import os
 from logging_config import setup_logger
 from flask_talisman import Talisman
