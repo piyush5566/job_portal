@@ -1,0 +1,1139 @@
+openapi: 3.1.0
+info:
+  title: Job Portal API
+  version: v1.0.0
+  description: |-
+    A comprehensive API for a Job Portal, allowing management of job postings,
+    companies, applicants, applications, and user authentication.
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Development server
+  - url: https://api.yourjobportal.com/v1
+    description: Production server
+
+tags:
+  - name: Jobs
+    description: Operations related to job postings.
+  - name: Companies
+    description: Operations related to company profiles.
+  - name: Applicants
+    description: Operations related to applicant profiles.
+  - name: Applications
+    description: Operations related to job applications.
+  - name: Authentication
+    description: Operations related to user authentication and authorization.
+
+components:
+  schemas:
+    # Error Schema
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: Error code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: array
+          items:
+            type: string
+          description: Optional array of specific error details.
+      required:
+        - code
+        - message
+
+    # Job Schemas
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the job posting.
+          readOnly: true
+        title:
+          type: string
+          description: Title of the job.
+          example: "Senior Software Engineer"
+        description:
+          type: string
+          description: Detailed description of the job.
+          example: "Join our dynamic team to build next-generation web applications..."
+        companyName:
+          type: string
+          description: Name of the company posting the job.
+          example: "Innovatech Solutions"
+        companyId:
+          type: string
+          format: uuid
+          description: Identifier of the company (links to Company resource).
+          nullable: true
+        location:
+          type: string
+          description: Location of the job.
+          example: "New York, NY"
+        employmentType:
+          type: string
+          description: Type of employment.
+          enum: [full-time, part-time, contract, internship, temporary]
+          example: "full-time"
+        postedDate:
+          type: string
+          format: date-time
+          description: Date when the job was posted.
+          readOnly: true
+          example: "2024-01-15T09:00:00Z"
+        closingDate:
+          type: string
+          format: date-time
+          nullable: true
+          description: Date when the job posting closes.
+          example: "2024-02-15T23:59:59Z"
+        skillsRequired:
+          type: array
+          items:
+            type: string
+          description: List of skills required for the job.
+          example: ["Go", "Kubernetes", "AWS", "Microservices"]
+        salaryRange:
+          type: object
+          properties:
+            min:
+              type: number
+              format: float
+              description: Minimum salary.
+            max:
+              type: number
+              format: float
+              description: Maximum salary.
+            currency:
+              type: string
+              description: Currency code (e.g., USD, EUR).
+              example: "USD"
+            period:
+              type: string
+              description: Salary period.
+              enum: [hourly, daily, weekly, monthly, yearly]
+              example: "yearly"
+          description: Salary range for the job.
+        experienceLevel:
+          type: string
+          description: Required experience level.
+          enum: [entry, junior, mid-level, senior, lead, principal, manager]
+          example: "senior"
+        isActive:
+          type: boolean
+          description: Indicates if the job posting is currently active.
+          readOnly: true
+          default: true
+        howToApply:
+          type: string
+          description: Instructions or link on how to apply.
+          example: "Apply via our career portal: https://careers.innovatech.com/apply/job123"
+      required:
+        - title
+        - description
+        - companyName
+        - location
+        - employmentType
+
+    JobInput:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        companyName:
+          type: string
+        companyId:
+          type: string
+          format: uuid
+          nullable: true
+        location:
+          type: string
+        employmentType:
+          type: string
+          enum: [full-time, part-time, contract, internship, temporary]
+        closingDate:
+          type: string
+          format: date-time
+          nullable: true
+        skillsRequired:
+          type: array
+          items:
+            type: string
+        salaryRange:
+          type: object
+          properties:
+            min:
+              type: number
+              format: float
+            max:
+              type: number
+              format: float
+            currency:
+              type: string
+            period:
+              type: string
+              enum: [hourly, daily, weekly, monthly, yearly]
+        experienceLevel:
+          type: string
+          enum: [entry, junior, mid-level, senior, lead, principal, manager]
+        isActive:
+          type: boolean
+          default: true
+        howToApply:
+          type: string
+      required:
+        - title
+        - description
+        - companyName
+        - location
+        - employmentType
+
+    # Company Schemas
+    Company:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        website:
+          type: string
+          format: url
+          nullable: true
+        logoUrl:
+          type: string
+          format: url
+          nullable: true
+        industry:
+          type: string
+          nullable: true
+        size:
+          type: string
+          description: Company size (e.g., 1-50, 51-200, 201-500, 500+).
+          nullable: true
+      required:
+        - name
+
+    CompanyInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        website:
+          type: string
+          format: url
+          nullable: true
+        logoUrl:
+          type: string
+          format: url
+          nullable: true
+        industry:
+          type: string
+          nullable: true
+        size:
+          type: string
+          nullable: true
+      required:
+        - name
+
+    # Applicant Schemas
+    Applicant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        userId:
+          type: string
+          format: uuid
+          description: Link to the User account.
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        resumeUrl:
+          type: string
+          format: url
+          nullable: true
+        portfolioUrl:
+          type: string
+          format: url
+          nullable: true
+        skills:
+          type: array
+          items:
+            type: string
+          nullable: true
+      required:
+        - userId
+        - firstName
+        - lastName
+        - email
+
+    ApplicantInput:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email: # May be pre-filled from User account
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        resumeUrl:
+          type: string
+          format: url
+          nullable: true
+        portfolioUrl:
+          type: string
+          format: url
+          nullable: true
+        skills:
+          type: array
+          items:
+            type: string
+          nullable: true
+      required:
+        - firstName
+        - lastName
+
+    # Job Application Schemas
+    JobApplication:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        jobId:
+          type: string
+          format: uuid
+        applicantId:
+          type: string
+          format: uuid
+        applicationDate:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          type: string
+          enum:
+            [submitted, reviewed, interviewing, offered, rejected, withdrawn]
+          default: submitted
+        coverLetter:
+          type: string
+          nullable: true
+        notes: # Internal notes for recruiter/hiring manager
+          type: string
+          nullable: true
+      required:
+        - jobId
+        - applicantId
+
+    JobApplicationInput:
+      type: object
+      properties:
+        # applicantId is often derived from the authenticated user
+        coverLetter:
+          type: string
+          nullable: true
+      # No required fields if applicantId is implicit
+
+    # Authentication Schemas
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum: [applicant, recruiter, admin]
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - id
+        - username
+        - email
+        - role
+
+    UserRegistrationInput:
+      type: object
+      properties:
+        username:
+          type: string
+          minLength: 3
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+          minLength: 8
+        role:
+          type: string
+          enum: [applicant, recruiter] # Admin role usually set manually
+          default: applicant
+      required:
+        - username
+        - email
+        - password
+
+    LoginInput:
+      type: object
+      properties:
+        email: # or username
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+      required:
+        - email
+        - password
+
+    AuthToken:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        tokenType:
+          type: string
+          example: "Bearer"
+        expiresIn:
+          type: integer
+          format: int32
+          description: "Lifetime in seconds of the access token"
+        refreshToken:
+          type: string
+          nullable: true
+      required:
+        - accessToken
+        - tokenType
+
+    UserUpdateInput:
+      type: object
+      properties:
+        username:
+          type: string
+          minLength: 3
+          description: New username for the user.
+        email:
+          type: string
+          format: email
+          description: New email address for the user.
+      description: Fields for updating a user's profile information (excluding password).
+
+    ChangePasswordInput:
+      type: object
+      properties:
+        currentPassword:
+          type: string
+          format: password
+        newPassword:
+          type: string
+          format: password
+          minLength: 8
+      required: [currentPassword, newPassword]
+  parameters:
+    JobIdParameter:
+      name: jobId
+      in: path
+      required: true
+      description: Identifier of the job.
+      schema:
+        type: string
+        format: uuid
+    CompanyIdParameter:
+      name: companyId
+      in: path
+      required: true
+      description: Identifier of the company.
+      schema:
+        type: string
+        format: uuid
+    ApplicantIdParameter:
+      name: applicantId
+      in: path
+      required: true
+      description: Identifier of the applicant.
+      schema:
+        type: string
+        format: uuid
+    ApplicationIdParameter:
+      name: applicationId
+      in: path
+      required: true
+      description: Identifier of the job application.
+      schema:
+        type: string
+        format: uuid
+    LimitParameter:
+      name: limit
+      in: query
+      description: Maximum number of items to return.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 20
+        minimum: 1
+        maximum: 100
+    OffsetParameter:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 0
+        minimum: 0
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "JWT Authentication. Example: 'Authorization: Bearer {token}'"
+
+  responses:
+    UnauthorizedError:
+      description: Authentication information is missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    ForbiddenError:
+      description: Client does not have permission to access the resource.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFoundError:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    BadRequestError:
+      description: The request is malformed or contains invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalServerError:
+      description: An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+security:
+  - BearerAuth: [] # Global security requirement, can be overridden per operation
+
+paths:
+  # Authentication Paths
+  /auth/register:
+    post:
+      summary: Register a new user
+      tags: [Authentication]
+      operationId: registerUser
+      security: [] # Public endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRegistrationInput"
+      responses:
+        "201":
+          description: User registered successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          $ref: "#/components/responses/BadRequestError" # e.g., email already exists
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /auth/login:
+    post:
+      summary: Log in a user
+      tags: [Authentication]
+      operationId: loginUser
+      security: [] # Public endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginInput"
+      responses:
+        "200":
+          description: Login successful, returns auth token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthToken"
+        "400":
+          $ref: "#/components/responses/BadRequestError" # Invalid credentials format
+        "401":
+          $ref: "#/components/responses/UnauthorizedError" # Incorrect credentials
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /auth/me:
+    get:
+      summary: Get current authenticated user's profile
+      tags: [Authentication]
+      operationId: getCurrentUser
+      responses:
+        "200":
+          description: Current user profile.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    put:
+      summary: Update current authenticated user's profile
+      tags: [Authentication]
+      operationId: updateCurrentUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserUpdateInput"
+      responses:
+        "200":
+          description: User profile updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          $ref: "#/components/responses/BadRequestError" # e.g., validation error, email taken
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  # Job Paths
+  /jobs:
+    get:
+      summary: List all jobs
+      tags: [Jobs]
+      operationId: listJobs
+      security: [] # Often public, or with limited fields for unauthenticated users
+      parameters:
+        - $ref: "#/components/parameters/LimitParameter"
+        - $ref: "#/components/parameters/OffsetParameter"
+        - name: location
+          in: query
+          schema: { type: string }
+        - name: skills
+          in: query
+          description: Comma-separated list of skills.
+          schema: { type: string }
+        - name: companyName
+          in: query
+          schema: { type: string }
+        - name: employmentType
+          in: query
+          schema:
+            {
+              type: string,
+              enum: [full-time, part-time, contract, internship, temporary],
+            }
+      responses:
+        "200":
+          description: A list of jobs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Job"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    post:
+      summary: Create a new job posting
+      tags: [Jobs]
+      operationId: createJob
+      # Security: BearerAuth is inherited (recruiter/admin role check would be in implementation)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobInput"
+      responses:
+        "201":
+          description: Job created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /jobs/{jobId}:
+    get:
+      summary: Get job details by ID
+      tags: [Jobs]
+      operationId: getJobById
+      security: [] # Often public
+      parameters:
+        - $ref: "#/components/parameters/JobIdParameter"
+      responses:
+        "200":
+          description: Detailed information about the job.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    put:
+      summary: Update an existing job
+      tags: [Jobs]
+      operationId: updateJobById
+      parameters:
+        - $ref: "#/components/parameters/JobIdParameter"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobInput"
+      responses:
+        "200":
+          description: Job updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    delete:
+      summary: Delete a job
+      tags: [Jobs]
+      operationId: deleteJobById
+      parameters:
+        - $ref: "#/components/parameters/JobIdParameter"
+      responses:
+        "204":
+          description: Job deleted successfully.
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  # Company Paths (Simplified for brevity - expand as needed)
+  /companies:
+    get:
+      summary: List all companies
+      tags: [Companies]
+      operationId: listCompanies
+      security: [] # Public
+      parameters:
+        - $ref: "#/components/parameters/LimitParameter"
+        - $ref: "#/components/parameters/OffsetParameter"
+      responses:
+        "200":
+          description: A list of companies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Company"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    post:
+      summary: Create a new company profile
+      tags: [Companies]
+      operationId: createCompany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompanyInput"
+      responses:
+        "201":
+          description: Company created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        # ... other error responses
+
+  /companies/{companyId}:
+    get:
+      summary: Get company by ID
+      tags: [Companies]
+      operationId: getCompanyById
+      security: [] # Public
+      parameters:
+        - $ref: "#/components/parameters/CompanyIdParameter"
+      responses:
+        "200":
+          description: Company details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        # ... other error responses
+    put:
+      summary: Update company by ID
+      tags: [Companies]
+      operationId: updateCompanyById
+      parameters:
+        - $ref: "#/components/parameters/CompanyIdParameter"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompanyInput"
+      responses:
+        "200":
+          description: Company updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    delete:
+      summary: Delete company by ID
+      tags: [Companies]
+      operationId: deleteCompanyById
+      parameters:
+        - $ref: "#/components/parameters/CompanyIdParameter"
+      responses:
+        "204":
+          description: Company deleted successfully.
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /companies/{companyId}/jobs:
+    get:
+      summary: List jobs for a specific company
+      tags: [Companies, Jobs] # Can belong to both or primarily Companies
+      operationId: listCompanyJobs
+      security: [] # Typically public
+      parameters:
+        - $ref: "#/components/parameters/CompanyIdParameter"
+        - $ref: "#/components/parameters/LimitParameter"
+        - $ref: "#/components/parameters/OffsetParameter"
+      responses:
+        "200":
+          description: A list of jobs for the specified company.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Job"
+        "404":
+          $ref: "#/components/responses/NotFoundError" # If company not found
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  # Applicant Paths (Simplified - typically linked to /auth/me or admin views)
+  /applicants/{applicantId}: # Or /me/profile
+    get:
+      summary: Get applicant profile
+      tags: [Applicants]
+      operationId: getApplicantProfile
+      parameters:
+        - $ref: "#/components/parameters/ApplicantIdParameter" # Or implicit /me
+      responses:
+        "200":
+          description: Applicant profile.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Applicant"
+        # ... error responses
+    put:
+      summary: Update applicant profile
+      tags: [Applicants]
+      operationId: updateApplicantProfile
+      parameters:
+        - $ref: "#/components/parameters/ApplicantIdParameter" # Or implicit /me
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApplicantInput"
+      responses:
+        "200":
+          description: Applicant profile updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Applicant"
+        # ... error responses
+
+  # Job Application Paths
+  /jobs/{jobId}/applications:
+    post:
+      summary: Apply for a specific job
+      tags: [Applications]
+      operationId: applyForJob
+      parameters:
+        - $ref: "#/components/parameters/JobIdParameter"
+      requestBody:
+        description: Application details (applicantId often derived from auth).
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobApplicationInput"
+      responses:
+        "201":
+          description: Application submitted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobApplication"
+        "400":
+          $ref: "#/components/responses/BadRequestError" # e.g., already applied, job not active
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError" # e.g., recruiter trying to apply
+        "404":
+          $ref: "#/components/responses/NotFoundError" # Job not found
+    get: # For recruiters/admins
+      summary: List applications for a specific job
+      tags: [Applications]
+      operationId: listJobApplications
+      parameters:
+        - $ref: "#/components/parameters/JobIdParameter"
+        - $ref: "#/components/parameters/LimitParameter"
+        - $ref: "#/components/parameters/OffsetParameter"
+      responses:
+        "200":
+          description: A list of applications for the job.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/JobApplication"
+        # ... error responses
+
+  /applicants/{applicantId}/applications: # Or /me/applications
+    get:
+      summary: List applications submitted by an applicant
+      tags: [Applications]
+      operationId: listApplicantApplications
+      parameters:
+        - $ref: "#/components/parameters/ApplicantIdParameter" # Or implicit /me
+        - $ref: "#/components/parameters/LimitParameter"
+        - $ref: "#/components/parameters/OffsetParameter"
+      responses:
+        "200":
+          description: A list of applications by the applicant.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/JobApplication"
+        # ... error responses
+
+  /applications/{applicationId}: # For recruiters/admins to view/update specific application
+    get:
+      summary: Get a specific job application
+      tags: [Applications]
+      operationId: getJobApplicationById
+      parameters:
+        - $ref: "#/components/parameters/ApplicationIdParameter"
+      responses:
+        "200":
+          description: Details of the job application.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobApplication"
+        # ... error responses
+    put:
+      summary: Update status of a job application
+      tags: [Applications]
+      operationId: updateJobApplicationStatus
+      parameters:
+        - $ref: "#/components/parameters/ApplicationIdParameter"
+      requestBody:
+        description: Fields to update, e.g., status.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                    [
+                      submitted,
+                      reviewed,
+                      interviewing,
+                      offered,
+                      rejected,
+                      withdrawn,
+                    ]
+                notes:
+                  type: string
+                  nullable: true
+      responses:
+        "200":
+          description: Application status updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobApplication"
+        # ... error responses
+    post: # Sibling to GET and PUT for /applications/{applicationId}
+      summary: Applicant withdraws their job application
+      tags: [Applications]
+      operationId: withdrawJobApplication
+      parameters:
+        - $ref: "#/components/parameters/ApplicationIdParameter"
+      description: Allows an applicant to withdraw their application. The application status will be set to 'withdrawn'.
+      responses:
+        "200":
+          description: Application withdrawn successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobApplication" # Returns the updated application
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError" # If not the applicant or application not in a withdrawable state
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /auth/me/change-password:
+    post:
+      summary: Change current authenticated user's password
+      tags: [Authentication]
+      operationId: changeCurrentUserPassword
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChangePasswordInput"
+      responses:
+        "204":
+          description: Password changed successfully.
+        "400":
+          $ref: "#/components/responses/BadRequestError" # e.g., current password incorrect, new password policy violation
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /auth/logout:
+    post:
+      summary: Log out current user
+      tags: [Authentication]
+      operationId: logoutUser
+      responses:
+        "204":
+          description: Logout successful.
+        "401":
+          $ref: "#/components/responses/UnauthorizedError" # If no active session/token
+        "500":
+          $ref: "#/components/responses/InternalServerError"
