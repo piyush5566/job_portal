@@ -6,7 +6,7 @@ This module contains core application routes including:
 - Static pages
 """
 
-from flask import Blueprint, render_template, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for, flash, current_app
 from flask_mail import Message
 import os
 from forms import ContactForm
@@ -35,6 +35,8 @@ def index():
         /
     """
     logger.info("Home page accessed")
+    logger.info(f"Current app.root_path: {current_app.root_path}")
+    logger.info(f"Current app.template_folder: {current_app.template_folder}")
     # Get featured jobs (most recent jobs)
     featured_jobs = Job.query.order_by(Job.posted_date.desc()).limit(5).all()
 

@@ -129,8 +129,8 @@ The project uses `pytest` for running automated tests. The tests are located in 
     Pytest will automatically discover and run the tests in the `tests/` directory.
 
 ## Project Structure
-
-- `app.py`: Application factory (`create_app`) and core configuration.
+- `app/`: Core application package.
+  - `__init__.py`: Contains the application factory (`create_app`) and core Flask app setup.
 - `run.py`: Script to run the development server.
 - `models.py`: SQLAlchemy database models (e.g., `User`, `Job`, `Application`).
 - `forms.py`: WTForms form definitions for user input and validation.
