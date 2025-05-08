@@ -20,13 +20,15 @@ from google.cloud import storage
 import io # Needed for BytesIO in serve_resume later
 
 # Configuration constants
-UPLOAD_FOLDER = 'static/resumes'
+BASE_DIR = os.path.abspath(os.path.dirname(__file__)) # Assuming config.py is in the project root
+STATIC_FOLDER = os.path.join(BASE_DIR, 'static')
+UPLOAD_FOLDER = os.path.join(STATIC_FOLDER, 'resumes')
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx'}
 ALLOWED_RESUME_EXTENSIONS = {'pdf', 'doc', 'docx'}
 ALLOWED_IMAGE_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-PROFILE_UPLOAD_FOLDER = 'static/img/profiles'
+PROFILE_UPLOAD_FOLDER = os.path.join(STATIC_FOLDER, 'img', 'profiles')
 ALLOWED_PIC_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-COMPANY_LOGOS_FOLDER = 'static/img/company_logos'
+COMPANY_LOGOS_FOLDER = os.path.join(STATIC_FOLDER, 'img', 'company_logos')
 
 # Logger
 logger = logging.getLogger('job_portal')

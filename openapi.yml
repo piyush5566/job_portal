@@ -30,9 +30,48 @@ tags:
     description: Operations related to job applications.
   - name: Authentication
     description: Operations related to user authentication and authorization.
+  - name: Admin
+    description: Operations related to administrative functions.
+  - name: Employer
+    description: Operations related to employer functions.
+  - name: JobSeeker
+    description: Operations related to job seeker functions.
+  - name: Utils
+    description: Utility operations for the application.
 
 components:
   schemas:
+    # Additional Schemas for Forms
+    ContactForm:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the person contacting
+        email:
+          type: string
+          format: email
+          description: Email address of the person contacting
+        subject:
+          type: string
+          description: Subject of the contact message
+        message:
+          type: string
+          description: Contact message content
+      required:
+        - name
+        - email
+        - subject
+        - message
+        
+    ApplicationForm:
+      type: object
+      properties:
+        resume:
+          type: string
+          format: binary
+          description: Resume file to upload
+          
     # Error Schema
     Error:
       type: object
@@ -349,7 +388,7 @@ components:
           format: date-time
           readOnly: true
         status:
-          type: string
+          type: stringing
           enum:
             [submitted, reviewed, interviewing, offered, rejected, withdrawn]
           default: submitted
@@ -1135,5 +1174,909 @@ paths:
           description: Logout successful.
         "401":
           $ref: "#/components/responses/UnauthorizedError" # If no active session/token
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  # Admin Routes
+  /admin/dashboard:
+    get:
+      summary: Admin dashboard
+      tags: [Admin]
+      operationId: getAdminDashboard
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Admin dashboard data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Admin dashboard accessed successfully"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/users:
+    get:
+      summary: List all users for admin management
+      tags: [Admin]
+      operationId: listUsers
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: List of all users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/users/new:
+    post:
+      summary: Create a new user as admin
+      tags: [Admin]
+      operationId: createUserAsAdmin
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRegistrationInput"
+      responses:
+        "201":
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/users/{userId}/edit:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the user to edit
+    put:
+      summary: Update user details as admin
+      tags: [Admin]
+      operationId: updateUserAsAdmin
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserUpdateInput"
+      responses:
+        "200":
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/users/{userId}/delete:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the user to delete
+    post:
+      summary: Delete a user as admin
+      tags: [Admin]
+      operationId: deleteUserAsAdmin
+      security:
+        - BearerAuth: []
+      responses:
+        "204":
+          description: User deleted successfully
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/jobs:
+    get:
+      summary: List all jobs for admin management
+      tags: [Admin, Jobs]
+      operationId: listJobsAsAdmin
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: List of all jobs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Job"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/jobs/new:
+    post:
+      summary: Create a new job as admin
+      tags: [Admin, Jobs]
+      operationId: createJobAsAdmin
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobInput"
+      responses:
+        "201":
+          description: Job created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/jobs/{jobId}/edit:
+    parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the job to edit
+    put:
+      summary: Update job details as admin
+      tags: [Admin, Jobs]
+      operationId: updateJobAsAdmin
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobInput"
+      responses:
+        "200":
+          description: Job updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/jobs/{jobId}/delete:
+    parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the job to delete
+    post:
+      summary: Delete a job as admin
+      tags: [Admin, Jobs]
+      operationId: deleteJobAsAdmin
+      security:
+        - BearerAuth: []
+      responses:
+        "204":
+          description: Job deleted successfully
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/applications:
+    get:
+      summary: List all job applications for admin management
+      tags: [Admin, Applications]
+      operationId: listApplicationsAsAdmin
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: List of all applications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/JobApplication"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /admin/applications/{applicationId}/update:
+    parameters:
+      - name: applicationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the application to update
+    post:
+      summary: Update application status as admin
+      tags: [Admin, Applications]
+      operationId: updateApplicationStatusAsAdmin
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [pending, reviewed, rejected, shortlisted, hired]
+                  description: New status for the application
+              required:
+                - status
+      responses:
+        "200":
+          description: Application status updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobApplication"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  # Employer Routes
+  /post-job-redirect:
+    get:
+      summary: Redirect to appropriate job posting page based on role
+      tags: [Employer]
+      operationId: postJobRedirect
+      security:
+        - BearerAuth: []
+      responses:
+        "302":
+          description: Redirect to appropriate job posting page
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL to redirect to
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /jobs/new:
+    get:
+      summary: Display job creation form
+      tags: [Employer, Jobs]
+      operationId: getJobCreationForm
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Job creation form
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Job creation form"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    post:
+      summary: Create a new job as employer
+      tags: [Employer, Jobs]
+      operationId: createJobAsEmployer
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobInput"
+      responses:
+        "201":
+          description: Job created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /my_jobs:
+    get:
+      summary: List jobs posted by the current employer
+      tags: [Employer, Jobs]
+      operationId: listMyJobs
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: List of jobs posted by the current employer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Job"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /jobs/{jobId}/applications:
+    parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the job to view applications for
+    get:
+      summary: List applications for a specific job
+      tags: [Employer, Applications]
+      operationId: listJobApplicationsAsEmployer
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: List of applications for the job
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/JobApplication"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /jobs/{jobId}/delete:
+    parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the job to delete
+    post:
+      summary: Delete a job as employer
+      tags: [Employer, Jobs]
+      operationId: deleteJobAsEmployer
+      security:
+        - BearerAuth: []
+      responses:
+        "204":
+          description: Job deleted successfully
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /applications/{applicationId}/update:
+    parameters:
+      - name: applicationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the application to update
+    post:
+      summary: Update application status as employer
+      tags: [Employer, Applications]
+      operationId: updateApplicationStatusAsEmployer
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [pending, reviewed, rejected, shortlisted, hired]
+                  description: New status for the application
+              required:
+                - status
+      responses:
+        "200":
+          description: Application status updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobApplication"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  # Job Seeker Routes
+  /my_applications:
+    get:
+      summary: List applications submitted by the current job seeker
+      tags: [JobSeeker, Applications]
+      operationId: listMyApplications
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: List of applications submitted by the current job seeker
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/JobApplication"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  # Jobs Routes
+  /jobs/list:
+    get:
+      summary: List all jobs with optional filtering
+      tags: [Jobs]
+      operationId: listAllJobs
+      security: [] # Public endpoint
+      parameters:
+        - name: location
+          in: query
+          schema:
+            type: string
+          description: Filter jobs by location
+        - name: category
+          in: query
+          schema:
+            type: string
+          description: Filter jobs by category
+        - name: company
+          in: query
+          schema:
+            type: string
+          description: Filter jobs by company name
+      responses:
+        "200":
+          description: List of jobs matching the criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Job"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /jobs/search:
+    get:
+      summary: Search jobs API (JSON response)
+      tags: [Jobs]
+      operationId: searchJobs
+      security: [] # Public endpoint
+      parameters:
+        - name: location
+          in: query
+          schema:
+            type: string
+          description: Filter jobs by location
+        - name: category
+          in: query
+          schema:
+            type: string
+          description: Filter jobs by category
+        - name: company
+          in: query
+          schema:
+            type: string
+          description: Filter jobs by company name
+      responses:
+        "200":
+          description: JSON response with job listings matching criteria
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        title:
+                          type: string
+                        company:
+                          type: string
+                        location:
+                          type: string
+                        category:
+                          type: string
+                        salary:
+                          type: string
+                        company_logo:
+                          type: string
+                        posted_date:
+                          type: string
+                          format: date-time
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /jobs/apply/{jobId}:
+    parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID of the job to apply for
+    get:
+      summary: Display job application form
+      tags: [JobSeeker, Applications]
+      operationId: getJobApplicationForm
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Job application form
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Job application form"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    post:
+      summary: Submit job application
+      tags: [JobSeeker, Applications]
+      operationId: applyForJobAsJobSeeker
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                resume:
+                  type: string
+                  format: binary
+                  description: Resume file to upload
+      responses:
+        "201":
+          description: Application submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobApplication"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  # Utility Routes
+  /resume/{cs_suffix}:
+    parameters:
+      - name: cs_suffix
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The suffix of the GCS object name or local path
+    get:
+      summary: Securely serve resume files
+      tags: [Utils]
+      operationId: serveResume
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Resume file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  # Main Routes
+  /:
+    get:
+      summary: Display the application home page
+      tags: [Main]
+      operationId: getHomePage
+      security: [] # Public endpoint
+      responses:
+        "200":
+          description: Home page with featured jobs and categories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  featured_jobs:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Job"
+                  job_categories:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /about:
+    get:
+      summary: Display the about page
+      tags: [Main]
+      operationId: getAboutPage
+      security: [] # Public endpoint
+      responses:
+        "200":
+          description: About page
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "About page"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /privacy:
+    get:
+      summary: Display the privacy policy page
+      tags: [Main]
+      operationId: getPrivacyPage
+      security: [] # Public endpoint
+      responses:
+        "200":
+          description: Privacy policy page
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Privacy policy page"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /terms:
+    get:
+      summary: Display the terms of service page
+      tags: [Main]
+      operationId: getTermsPage
+      security: [] # Public endpoint
+      responses:
+        "200":
+          description: Terms of service page
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Terms of service page"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+          
+  /contact:
+    get:
+      summary: Display the contact form
+      tags: [Main]
+      operationId: getContactForm
+      security: [] # Public endpoint
+      responses:
+        "200":
+          description: Contact form
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Contact form"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+    post:
+      summary: Submit contact form
+      tags: [Main]
+      operationId: submitContactForm
+      security: [] # Public endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the person contacting
+                email:
+                  type: string
+                  format: email
+                  description: Email address of the person contacting
+                subject:
+                  type: string
+                  description: Subject of the contact message
+                message:
+                  type: string
+                  description: Contact message content
+              required:
+                - name
+                - email
+                - subject
+                - message
+      responses:
+        "200":
+          description: Contact form submitted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Your message has been sent! We will get back to you soon."
+        "400":
+          $ref: "#/components/responses/BadRequestError"
         "500":
           $ref: "#/components/responses/InternalServerError"
