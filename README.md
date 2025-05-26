@@ -4,6 +4,12 @@ A full-featured job portal web application built with Flask, allowing job seeker
 
 Live Deployment: https://jobportal-production-fcd5.up.railway.app
 
+Django Variant: [GitHub](https://github.com/piyush5566/job_portal_django), [Live](https://oco78cjc1j.execute-api.us-east-1.amazonaws.com/demo)
+
+React + Spring Boot Variant: [GitHub Frontend](https://github.com/piyush5566/job-board-replica-gemini), [GitHub Backend](https://github.com/piyush5566/job_portal_backend_springboot)
+
+GraphQL Variant: [GitHub](https://github.com/piyush5566/job_portal_graphql)
+
 ## Features
 
 - **User Management**
